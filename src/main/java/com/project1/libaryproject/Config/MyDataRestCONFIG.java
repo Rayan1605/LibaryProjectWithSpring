@@ -15,9 +15,13 @@ public void configureRepositoryRestConfiguration(RepositoryRestConfiguration con
     HttpMethod[] theUnsupportedActions = {HttpMethod.POST, HttpMethod.PATCH, HttpMethod.DELETE,HttpMethod.PUT};
 
     config.exposeIdsFor(Book.class);
+
+    disableHttpMethods(Book.class,config, theUnsupportedActions);
+
 }
 
-
+    private void disableHttpMethods(Class<Book> bookClass, RepositoryRestConfiguration config, HttpMethod[] theUnsupportedActions) {
+    }
 
 
 }
