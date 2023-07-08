@@ -17,7 +17,7 @@ public void configureRepositoryRestConfiguration(RepositoryRestConfiguration con
     config.exposeIdsFor(Book.class);
 
     disableHttpMethods(Book.class,config, theUnsupportedActions);
-
+registry.addMapping(config.getBasePath() + "/**").allowedOrigins(theAllowedOrgin);
 }
 
     private void disableHttpMethods(Class bookClass,
