@@ -23,6 +23,13 @@ public void configureRepositoryRestConfiguration(RepositoryRestConfiguration con
     private void disableHttpMethods(Class bookClass,
                                     RepositoryRestConfiguration config,
                                     HttpMethod[] theUnsupportedActions) {
+
+    config.getExposureConfiguration().forDomainType(bookClass).withItemExposure((metdata, httpMethods)
+                    -> httpMethods.disable(theUnsupportedActions))
+            .withCollectionExposure((metdata, httpMethods)
+                    -> httpMethods.disable(theUnsupportedActions));
+
+
     }
 
 
