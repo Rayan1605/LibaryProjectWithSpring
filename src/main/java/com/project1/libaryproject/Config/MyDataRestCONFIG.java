@@ -20,7 +20,7 @@ public void configureRepositoryRestConfiguration(RepositoryRestConfiguration con
 
 }
 
-    private void disableHttpMethods(Class<Book> bookClass, RepositoryRestConfiguration config, HttpMethod[] theUnsupportedActions) {
+    private void disableHttpMethods(Class bookClass, RepositoryRestConfiguration config, HttpMethod[] theUnsupportedActions) {
     }
 
 
