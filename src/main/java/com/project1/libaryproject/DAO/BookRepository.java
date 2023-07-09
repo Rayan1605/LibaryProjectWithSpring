@@ -11,4 +11,7 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     //Which will generate the method at runtime
 
     Page<Book> findByTitleContaining(@Param("title") String title, Pageable pageable);
+    //This method will search for books by title and return a page of books
+
+
 }
