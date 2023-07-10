@@ -25,8 +25,9 @@ public class Review {
 
 @Column(name = "rating")
     private double rating;
+
 @Column(name = "book_id")
-private Long book_id;
+private Long BookId;
 
     @Column(name = "review_description")
 private String reviewDecription;
