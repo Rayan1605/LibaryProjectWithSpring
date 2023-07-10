@@ -1,7 +1,6 @@
 package com.project1.libaryproject.Entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,7 +8,6 @@ import lombok.NoArgsConstructor;
 @Table(name = "checkout")
 @Data
 @NoArgsConstructor
-
 public class Checkout {
 
     public Checkout(String UserEmail, String checkout_date, String return_date, Long BookId) {
@@ -18,20 +16,21 @@ public class Checkout {
         this.return_date = return_date;
         this.BookId = BookId;
     }
-@Id
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-@Column(name = "user_email")
-private String UserEmail;
+    @Column(name = "user_email")
+    private String UserEmail;
 
-@Column(name = "checkout_date")
-private String checkout_date;
+    @Column(name = "checkout_date")
+    private String checkout_date;
 
-@Column(name = "return_date")
-private String return_date;
+    @Column(name = "return_date")
+    private String return_date;
 
-@Column(name = "book_id")
-private Long BookId;
+    @Column(name = "book_id")
+    private Long BookId;
 
 }
