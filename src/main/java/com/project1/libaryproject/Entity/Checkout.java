@@ -9,8 +9,15 @@ import lombok.NoArgsConstructor;
 @Table(name = "checkout")
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+
 public class Checkout {
+
+    public Checkout(String UserEmail, String checkout_date, String return_date, Long BookId) {
+        this.UserEmail = UserEmail;
+        this.checkout_date = checkout_date;
+        this.return_date = return_date;
+        this.BookId = BookId;
+    }
 @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
