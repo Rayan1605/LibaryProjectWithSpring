@@ -18,11 +18,11 @@ private String Title;
 private String description;
     @Column(name = "copies")
 private int copies;
-    @Column(name = "available_copies")
+    @Column(name = "copies_available")
 private int available_copies;
     @Column(name = "category")
 private String category;
-    @Column(name = "image")
+    @Column(name = "img")
 private String Image;
 
 }
