@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CheckOutRespository extends JpaRepository<Checkout, Long> {
 
+    Checkout findByUserEmailAndBookId(String UserEmail, Long BookId);
 }
