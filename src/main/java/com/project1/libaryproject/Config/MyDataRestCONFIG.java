@@ -10,21 +10,20 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 @Configuration
 public class MyDataRestCONFIG implements RepositoryRestConfigurer {
 
-private String theAllowedOrgin = "http://localhost:3000";
-public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry registry){
+    public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry registry){
     HttpMethod[] theUnsupportedActions = {HttpMethod.POST, HttpMethod.PATCH, HttpMethod.DELETE,HttpMethod.PUT};
 
     config.exposeIdsFor(Book.class);
 
-    disableHttpMethods(Book.class,config, theUnsupportedActions);
-registry.addMapping(config.getBasePath() + "/**").allowedOrigins(theAllowedOrgin);
+    disableHttpMethods(config, theUnsupportedActions);
+    String theAllowedOrgin = "http://localhost:3000";
+    registry.addMapping(config.getBasePath() + "/**").allowedOrigins(theAllowedOrgin);
 }
 
-    private void disableHttpMethods(Class bookClass,
-                                    RepositoryRestConfiguration config,
+    private void disableHttpMethods(RepositoryRestConfiguration config,
                                     HttpMethod[] theUnsupportedActions) {
 
-    config.getExposureConfiguration().forDomainType(bookClass).withItemExposure((metdata, httpMethods)
+    config.getExposureConfiguration().forDomainType(Book.class).withItemExposure((metdata, httpMethods)
                     -> httpMethods.disable(theUnsupportedActions))
             .withCollectionExposure((metdata, httpMethods)
                     -> httpMethods.disable(theUnsupportedActions));
