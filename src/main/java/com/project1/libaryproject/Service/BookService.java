@@ -41,7 +41,7 @@ public class BookService {
         if (book.get().getAvailable_copies() == 0) throw new Exception("Book is not available");
 
         book.get().setAvailable_copies(book.get().getAvailable_copies() - 1);
-
+    bookRepository.save(book.get());
     }
 }
 
