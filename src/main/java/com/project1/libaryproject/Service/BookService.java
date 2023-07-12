@@ -34,14 +34,25 @@ public class BookService {
 
         Checkout validateUser = checkout.findByUserEmailAndBookId(userEmail, bookId);
 //Making sure validateUser is null because if not null then the user has already checked out the book
-        if (validateUser != null) throw new Exception("You have already checked out this book");
-
-        if (book.isEmpty()) throw new Exception("Book not found");
-
-        if (book.get().getAvailable_copies() == 0) throw new Exception("Book is not available");
-
+        int validate = Validate(userEmail, bookId, validateUser, book);
+        switch (validate) {
+            case 1 -> throw new Exception("You have already checked out this book");
+            case 2 -> throw new Exception("Book not found");
+            case 3 -> throw new Exception("Book is not available");
+        }
         book.get().setAvailable_copies(book.get().getAvailable_copies() - 1);
     bookRepository.save(book.get());
+
+    }
+
+    private int Validate(String userEmail,Long  bookId,Checkout validateUser,Optional<Book> book ) throws Exception{
+        if (validateUser != null) return 1;
+        if (book.isEmpty()) return 2;
+        if (book.get().getAvailable_copies() == 0) return 3;
+        return 0;
+    }
+
+
     }
 }
 
