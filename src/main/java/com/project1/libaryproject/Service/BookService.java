@@ -36,7 +36,7 @@ public class BookService {
 
         Checkout validateUser = checkout.findByUserEmailAndBookId(userEmail, bookId);
 //Making sure validateUser is null because if not null then the user has already checked out the book
-        int validate = Validate(userEmail, bookId, validateUser, book);
+        int validate = Validate(validateUser, book);
         switch (validate) {
             case 1 -> throw new Exception("You have already checked out this book");
             case 2 -> throw new Exception("Book not found");
@@ -57,7 +57,7 @@ public class BookService {
 
     }
 
-    private int Validate(String userEmail,Long  bookId,Checkout validateUser,Optional<Book> book ) throws Exception{
+    private int Validate(Checkout validateUser,Optional<Book> book ) throws Exception{
         if (validateUser != null) return 1;
         if (book.isEmpty()) return 2;
         if (book.get().getAvailable_copies() == 0) return 3;
