@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 @Service
@@ -19,6 +20,7 @@ public class BookService {
     private BookRepository bookRepository;
     //Using lomback to generate constructor for dependency injection
     private CheckOutRepository checkout;
+    private final CheckOutRepository checkOutRepository;
 
     public Book checkoutBook(String userEmail, Long bookId) throws Exception {
 //This method will checkout a book by a user
@@ -42,6 +44,16 @@ public class BookService {
         }
         book.get().setAvailable_copies(book.get().getAvailable_copies() - 1);
     bookRepository.save(book.get());
+//If the book is found we will checkout the book
+        Checkout checkout = new Checkout(
+          userEmail,
+                LocalDate.now().toString(),
+                LocalDate.now().plusDays(7).toString(),
+                book.get().getId()
+
+        );
+        checkOutRepository.save(checkout);
+        return book.get();
 
     }
 
