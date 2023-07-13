@@ -62,7 +62,8 @@ public class BookService {
         if (book.get().getAvailable_copies() == 0) return 3;
         return 0;
     }
-
+//This is to check if the user has already checked out the book if it did then we will return true
+    // and print the already checkout in our react app
     public Boolean checkoutBookByUser(String userEmail, Long bookId)  {
    Checkout validateCheckout = checkOutRepository.findByUserEmailAndBookId(userEmail, bookId);
         return validateCheckout != null;
