@@ -56,21 +56,23 @@ public class BookService {
 
     }
 
-    private int Validate(Checkout validateUser,Optional<Book> book ) {
+    private int Validate(Checkout validateUser, Optional<Book> book) {
         if (validateUser != null) return 1;
         if (book.isEmpty()) return 2;
         if (book.get().getAvailable_copies() == 0) return 3;
         return 0;
     }
-//This is to check if the user has already checked out the book if it did then we will return true
+
+    //This is to check if the user has already checked out the book if it did then we will return true
     // and print the already checked out in our React app
-    public Boolean checkoutBookByUser(String userEmail, Long bookId)  {
-   Checkout validateCheckout = checkOutRepository.findByUserEmailAndBookId(userEmail, bookId);
+    public Boolean checkoutBookByUser(String userEmail, Long bookId) {
+        Checkout validateCheckout = checkOutRepository.findByUserEmailAndBookId(userEmail, bookId);
         return validateCheckout != null;
     }
 
-public int currentLoansCount(String userEmail){
+    public int currentLoansCount(String userEmail) {
         return checkOutRepository.findByUserEmail(userEmail).size();
+    }
 }
 
 
