@@ -37,8 +37,10 @@ public class ExtractJwt {
             }
 
         }
-
+if (map.containsKey("\"sub\"")) {
+    return map.get("\"sub\"");
     }
+    return null;
 
     }
 
