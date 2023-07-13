@@ -21,7 +21,7 @@ public class BookController {
 public int currentLoansCount(@RequestHeader(value = "Authorization") String token) {
         //We are extracting the token from the header and passing it to the method
         //we are expecting something in the request header that has a key of Authorization
-        // it validating with okta automatically and then we are passing the token to the method
+        // it's validating with okta automatically, and then we are passing the token to the method
         String userEmail = "testuser@email.com";
         return bookService.currentLoansCount(userEmail);
     }
