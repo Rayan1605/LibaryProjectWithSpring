@@ -69,7 +69,8 @@ public class BookService {
         return validateCheckout != null;
     }
 
-
+public int currentLoansCount(String userEmail){
+        return checkOutRepository.findByUserEmail(userEmail).size();
 }
 
 
