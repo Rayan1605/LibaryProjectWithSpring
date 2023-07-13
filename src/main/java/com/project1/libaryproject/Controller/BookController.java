@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:3000")//This is to allow the react app
+@CrossOrigin(origins = "http://localhost:3000")//This is to allow the React app
 // to access the api
 @RestController
 @RequestMapping("/api/books")

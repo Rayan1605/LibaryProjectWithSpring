@@ -17,7 +17,7 @@ import java.util.Optional;
 public class BookService {
 
     private BookRepository bookRepository;
-    //Using lomback to generate constructor for dependency injection
+    //Using lombok to generate constructor for dependency injection
     private CheckOutRepository checkout;
     private final CheckOutRepository checkOutRepository;
 
