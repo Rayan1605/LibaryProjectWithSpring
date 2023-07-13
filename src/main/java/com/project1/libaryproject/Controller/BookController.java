@@ -25,8 +25,8 @@ public Book checkoutBook(@RequestParam Long bookId) throws Exception{
     }
 
     @GetMapping("/secure/ischeckoutedout/byuser")
-    public boolean checkoutBookByUser(@RequestParam Long bookId) throws Exception{
+    public boolean checkoutBookByUser(@RequestParam Long bookId) {
 
-        String userEmail = "
+        String userEmail = "testuser@email.com";
 
 }
