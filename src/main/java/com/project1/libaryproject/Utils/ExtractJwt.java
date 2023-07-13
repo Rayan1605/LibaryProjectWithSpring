@@ -16,6 +16,8 @@ public class ExtractJwt {
         //Above is written so we can get just the payload part of the token
         // And ignore the header and the signature
 
+   String[] entries = payload.split(",");
+   //So every element in the payload will be it own element in the array
 
 
 
