@@ -27,7 +27,7 @@ public class BookService {
 //If the user has already checked out the book it will throw an exception
 //If the user has not checked out the book it will checkout the book and return the book
 
-        //First we need to find a specfic book by its id
+        //First we need to find a specific book by its id
         //When you call the database you need to return an optional
 
         Optional<Book> book = bookRepository.findById(bookId);
