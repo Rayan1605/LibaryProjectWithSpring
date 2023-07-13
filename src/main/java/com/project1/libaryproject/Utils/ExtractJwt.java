@@ -12,7 +12,7 @@ public class ExtractJwt {
         // because it's a special character
 
         Base64.Decoder decoder = Base64.getUrlDecoder(); //This is to decode the token
-
+        String payload = new String(decoder.decode(parts[1]));
 
 
 
