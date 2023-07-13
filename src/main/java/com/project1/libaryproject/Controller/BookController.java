@@ -17,6 +17,7 @@ public class BookController {
     @GetMapping("/secure/currentloans/count") // the secure mean only a user with a
 public int currentLoansCount() {
         String userEmail = "testuser@email.com";
+        return bookService.currentLoansCount(userEmail);
     @PutMapping("/secure/checkout") // the secure mean only a user with a
     // role of user can access this
     //Put is referring to updating the book
