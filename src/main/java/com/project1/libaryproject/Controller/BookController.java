@@ -17,10 +17,16 @@ public class BookController {
 
     @PutMapping("/secure/checkout") // the secure mean only a user with a
     // role of user can access this
+    //Put is referring to updating the book
 public Book checkoutBook(@RequestParam Long bookId) throws Exception{
 
         String userEmail = "testuser@email.com";
         return bookService.checkoutBook(userEmail, bookId);
     }
+
+    @GetMapping("/secure/ischeckoutedout/byuser")
+    public boolean checkoutBookByUser(@RequestParam Long bookId) throws Exception{
+
+        String userEmail = "
 
 }
