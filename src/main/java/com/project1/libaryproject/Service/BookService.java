@@ -63,6 +63,10 @@ public class BookService {
         return 0;
     }
 
+    public Boolean checkoutBookByUser(String userEmail, Long bookId)  {
+
+    }
+
 
 }
 
