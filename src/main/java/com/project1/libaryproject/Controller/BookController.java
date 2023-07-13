@@ -29,14 +29,14 @@ public int currentLoansCount(@RequestHeader(value = "Authorization") String toke
     @PutMapping("/secure/checkout") // the secure mean only a user with a
     // role of user can access this
     //Put is referring to updating the book
-    public Book checkoutBook(@RequestParam Long bookId) throws Exception {
+    public Book checkoutBook(@RequestParam Long bookId,@RequestHeader(value = "Authorization") String token) throws Exception {
 
         String userEmail = "testuser@email.com";
         return bookService.checkoutBook(userEmail, bookId);
     }
 
     @GetMapping("/secure/ischeckoutedout/byuser")
-    public boolean checkoutBookByUser(@RequestParam Long bookId) {
+    public boolean checkoutBookByUser(@RequestParam Long bookId,@RequestHeader(value = "Authorization") String token) {
 //Remember this is to check if the user has already checked out the book
         String userEmail = "testuser@email.com";
         return bookService.checkoutBookByUser(userEmail, bookId);
