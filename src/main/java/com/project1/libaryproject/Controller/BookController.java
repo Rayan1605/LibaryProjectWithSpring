@@ -3,7 +3,7 @@ package com.project1.libaryproject.Controller;
 import com.project1.libaryproject.Entity.Book;
 import com.project1.libaryproject.Service.BookService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "http://localhost:3000")//This is to allow the react app
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/books")
 @AllArgsConstructor
 public class BookController {
-    @Autowired
     private BookService bookService;
 
     @PutMapping("/secure/checkout") // the secure mean only a user with a
