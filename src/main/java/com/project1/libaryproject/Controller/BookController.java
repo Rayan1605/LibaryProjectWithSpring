@@ -18,7 +18,9 @@ public class BookController {
         this.bookService = bookService;
     }
     @GetMapping("/secure/currentloans/count") // the secure mean only a user with a
-public int currentLoansCount() {
+public int currentLoansCount(@RequestHeader(value = "Authorization") String token) {
+        //We are extracting the token from the header and passing it to the method
+        //we are expecting something in the request header that has a key of Authorization
         String userEmail = "testuser@email.com";
         return bookService.currentLoansCount(userEmail);
     }
