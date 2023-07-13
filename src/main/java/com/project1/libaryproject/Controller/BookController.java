@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.*;
 public class BookController {
     private BookService bookService;
 
+    @GetMapping("/secure/currentloans/count") // the secure mean only a user with a
+public int currentLoansCount() {
+        String userEmail = "testuser@email.com";
     @PutMapping("/secure/checkout") // the secure mean only a user with a
     // role of user can access this
     //Put is referring to updating the book
