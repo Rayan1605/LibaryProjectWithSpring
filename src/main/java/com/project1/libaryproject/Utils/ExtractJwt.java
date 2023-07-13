@@ -1,6 +1,8 @@
 package com.project1.libaryproject.Utils;
 
 import java.util.Base64;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ExtractJwt {
 //This is because the token starts with Bearer and then the token so we need to take it off
@@ -18,6 +20,8 @@ public class ExtractJwt {
 
    String[] entries = payload.split(",");
    //So every element in the payload will be it own element in the array
+
+        Map<String,String> map = new HashMap<>();
 
 
 
