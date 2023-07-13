@@ -4,16 +4,19 @@ import com.project1.libaryproject.Entity.Book;
 import com.project1.libaryproject.Service.BookService;
 import lombok.AllArgsConstructor;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "http://localhost:3000")//This is to allow the React app
 // to access the api
 @RestController
 @RequestMapping("/api/books")
-@AllArgsConstructor
 public class BookController {
-    private BookService bookService;
-
+    private final BookService bookService;
+    @Autowired
+    public BookController(BookService bookService) {
+        this.bookService = bookService;
+    }
     @GetMapping("/secure/currentloans/count") // the secure mean only a user with a
 public int currentLoansCount() {
         String userEmail = "testuser@email.com";
