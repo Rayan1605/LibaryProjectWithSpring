@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Checkout {
 
-    public Checkout(String userEmail, String checkout_date, String return_date, Long BookId) {
+    public Checkout(String userEmail, String checkout_date, String return_date, Long bookId) {
         this.userEmail = userEmail;
         this.checkout_date = checkout_date;
         this.return_date = return_date;
