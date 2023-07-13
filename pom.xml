@@ -23,6 +23,25 @@
             <version>2.1.6</version>
         </dependency>
         <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+            <!-- We encountered the error ClassNotFoundException for javax.servlet.http.HttpServletRequest,
+             it means that the HttpServletRequest class, which is part of the Java Servlet API,
+             was not available in your project.
+
+To resolve this issue, you needed to add the javax.servlet-api dependency to your project.
+This dependency includes the necessary Servlet API classes, including HttpServletRequest.
+By adding the dependency, you made those classes available in your project's classpath,
+ allowing your code to find and use them.
+
+In other words, the javax.servlet-api dependency provides the missing pieces required for
+ handling HTTP requests and related functionality in your application. By including this dependency,
+
+ you added the necessary components to make your code work properly. -->
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
