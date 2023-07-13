@@ -11,7 +11,8 @@ public class ExtractJwt {
         // the // is to escape the "."
         // because it's a special character
 
-        Base64.Decoder decoder = Base64.getUrlDecoder();
+        Base64.Decoder decoder = Base64.getUrlDecoder(); //This is to decode the token
+
 
 
 
