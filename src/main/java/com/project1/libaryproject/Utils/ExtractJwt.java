@@ -5,10 +5,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ExtractJwt {
-//This is because the token starts with Bearer and then the token so we need to take it off
+    //This is because the token starts with Bearer and then the token so we need to take it off
     public static String extractJwtToken(String header) {
-         header.replace("Bearer", "").trim();
-    String[] parts = header.split("\\.");//This is to split the token into 3 parts
+        header.replace("Bearer", "").trim();
+        String[] parts = header.split("\\.");//This is to split the token into 3 parts
         // the first part is the header, the second part is the payload, and the third part is the signature
         // the // is to escape the "."
         // because it's a special character
@@ -18,12 +18,27 @@ public class ExtractJwt {
         //Above is written so we can get just the payload part of the token
         // And ignore the header and the signature
 
-   String[] entries = payload.split(",");
-   //So every element in the payload will be it own element in the array
+        String[] entries = payload.split(",");
+        //So every element in the payload will be it own element in the array
 
-        Map<String,String> map = new HashMap<>();
+        Map<String, String> map = new HashMap<>();
 
+        for (String entry : entries) {
+            String[] keyValue = entry.split(":");
+            if (keyValue[0].equals("\"sub\"")) { // the slash is referring to the double quotes
+                // because the key is in double quotes
+                int remove = 1;
+                if (keyValue[1].endsWith("}")) {
+                    remove = 2;
+                }
+                keyValue[1] = keyValue[1].substring(0, keyValue[1].length() - remove);
+                keyValue[1] = keyValue[1].substring(1);
+                map.put(keyValue[0], keyValue[1]);
+            }
 
+        }
+
+    }
 
     }
 
