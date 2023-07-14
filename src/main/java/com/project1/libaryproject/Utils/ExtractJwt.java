@@ -52,7 +52,7 @@ if (map.containsKey(extraction)) { // if the map contains the key of sub then re
         // because it's a special character
 
         Base64.Decoder decoder = Base64.getUrlDecoder(); //This is to decode the token
-        //Above is written so we can get just the payload part of the token
+        //The Above is written, so we can get just the payload part of the token
         // And ignore the header and the signature
         return new String(decoder.decode(parts[1]));
     }
