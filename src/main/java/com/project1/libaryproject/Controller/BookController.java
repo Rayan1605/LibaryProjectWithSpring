@@ -18,6 +18,8 @@ public class BookController {
         this.bookService = bookService;
     }
     @GetMapping("/secure/currentloans/count") // the secure mean only a user with a
+    // role of user can access this
+    ////The secure we set up in the okta in the utils folder
 public int currentLoansCount(@RequestHeader(value = "Authorization") String token) {
         //We are extracting the token from the header and passing it to the method
         //we are expecting something in the request header that has a key of Authorization
