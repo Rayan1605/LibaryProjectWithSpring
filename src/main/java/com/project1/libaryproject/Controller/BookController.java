@@ -3,7 +3,6 @@ package com.project1.libaryproject.Controller;
 import com.project1.libaryproject.Entity.Book;
 import com.project1.libaryproject.Service.BookService;
 import com.project1.libaryproject.Utils.ExtractJwt;
-import lombok.AllArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -41,7 +40,7 @@ public int currentLoansCount(@RequestHeader(value = "Authorization") String toke
     @GetMapping("/secure/ischeckoutedout/byuser")
     public boolean checkoutBookByUser(@RequestParam Long bookId,@RequestHeader(value = "Authorization") String token) {
 //Remember this is to check if the user has already checked out the book
-        String userEmail = ExtractJwt.extractJwtToken(token, "sub"); //To get the user's email
+        String userEmail = ExtractJwt.extractJwtExtraction(token, "sub"); //To get the user's email
         return bookService.checkoutBookByUser(userEmail, bookId);
 
     }
