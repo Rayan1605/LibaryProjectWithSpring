@@ -22,6 +22,21 @@ public class SecurityConfiguration {
         // attack that forces an end user to execute unwanted actions on a web application
 
         http.csrf((csrf) -> csrf.ignoringRequestMatchers("/api/**"));
+//the http.csrf().disable() method is deprecated in Spring Security 5.7.0 and above.
+//
+//The recommended alternative is to use http.csrf((csrf) -> csrf.ignoringAntMatchers("/api/**")) instead.
+//
+//This ignores CSRF protection for specific ant pattern matchers,
+// rather than disabling it completely.
+      //
+
+
+
+
+
+
+
+
 
         // Protect endpoints at /api/<type>/secure
         http.authorizeHttpRequests(configurer -> //authorizeRequests is a method that takes a configurer;
