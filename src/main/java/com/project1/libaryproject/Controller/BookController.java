@@ -23,7 +23,7 @@ public int currentLoansCount(@RequestHeader(value = "Authorization") String toke
         //we are expecting something in the request header that has a key of Authorization
         // it's validating with okta automatically, and then we are passing the token to the method
         String userEmail = ExtractJwt.extractJwtExtraction(token, "sub");
-        //
+        //Above is To get the user's email
         return bookService.currentLoansCount(userEmail);
     }
 
