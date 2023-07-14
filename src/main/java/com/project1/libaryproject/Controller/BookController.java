@@ -2,7 +2,7 @@ package com.project1.libaryproject.Controller;
 
 import com.project1.libaryproject.Entity.Book;
 import com.project1.libaryproject.Service.BookService;
-import lombok.AllArgsConstructor;
+import com.project1.libaryproject.Utils.ExtractJwt;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,24 +18,37 @@ public class BookController {
         this.bookService = bookService;
     }
     @GetMapping("/secure/currentloans/count") // the secure mean only a user with a
-public int currentLoansCount() {
-        String userEmail = "testuser@email.com";
+    // role of user can access this
+    ////The secure we set up in the okta in the utils folder
+public int currentLoansCount(@RequestHeader(value = "Authorization") String token) {
+        //We are extracting the token from the header and passing it to the method
+        //we are expecting something in the request header that has a key of Authorization
+        // it's validating with okta automatically, and then we are passing the token to the method
+        String userEmail = ExtractJwt.extractJwtExtraction(token, "sub");
+        //Above is To get the user's email
         return bookService.currentLoansCount(userEmail);
     }
 
     @PutMapping("/secure/checkout") // the secure mean only a user with a
     // role of user can access this
     //Put is referring to updating the book
-    public Book checkoutBook(@RequestParam Long bookId) throws Exception {
+    //The secure we set up in the okta in the utils folder
+    public Book checkoutBook(@RequestParam Long bookId,
+                             @RequestHeader(value = "Authorization") String token) throws Exception
+    {
 
-        String userEmail = "testuser@email.com";
+        String userEmail = ExtractJwt.extractJwtExtraction(token, "sub");
+        //Above is To get the user's email
         return bookService.checkoutBook(userEmail, bookId);
     }
 
     @GetMapping("/secure/ischeckoutedout/byuser")
-    public boolean checkoutBookByUser(@RequestParam Long bookId) {
+    public boolean checkoutBookByUser(@RequestParam Long bookId,
+                                      @RequestHeader(value = "Authorization") String token) {
+        ////The secure we set up in the okta in the utils folder
 //Remember this is to check if the user has already checked out the book
-        String userEmail = "testuser@email.com";
+        String userEmail = ExtractJwt.extractJwtExtraction(token, "sub");
+        //Above is To get the user's email
         return bookService.checkoutBookByUser(userEmail, bookId);
 
     }
