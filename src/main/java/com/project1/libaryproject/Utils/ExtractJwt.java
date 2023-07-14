@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class ExtractJwt {
     //This is because the token starts with Bearer and then the token so we need to take it off
-    public static String extractJwtToken(String header) {
+    public static String extractJwtToken(String header,String extraction) {
         header.replace("Bearer", "").trim();
         String[] parts = header.split("\\.");//This is to split the token into 3 parts
         // the first part is the header, the second part is the payload, and the third part is the signature
@@ -27,7 +27,7 @@ public class ExtractJwt {
             //We are looping through the entries array to find the value of sub
             // which consists of the user's email
             String[] keyValue = entry.split(":");
-            if (keyValue[0].equals("\"sub\"")) { // the slash is referring to the double quotes
+            if (keyValue[0].equals(extraction)) { // the slash is referring to the double quotes
                 // because the key is in double quotes
                 int remove = 1;
                 //Then we had the key but for the value we need to remove the double quotes
