@@ -2,6 +2,7 @@ package com.project1.libaryproject.Controller;
 
 import com.project1.libaryproject.Entity.Book;
 import com.project1.libaryproject.Service.BookService;
+import com.project1.libaryproject.Utils.ExtractJwt;
 import lombok.AllArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,9 @@ public int currentLoansCount(@RequestHeader(value = "Authorization") String toke
     @PutMapping("/secure/checkout") // the secure mean only a user with a
     // role of user can access this
     //Put is referring to updating the book
-    public Book checkoutBook(@RequestParam Long bookId,@RequestHeader(value = "Authorization") String token) throws Exception {
+    public Book checkoutBook(@RequestParam Long bookId,
+                             @RequestHeader(value = "Authorization") String token)
+            throws Exception {
 
         String userEmail = "testuser@email.com";
         return bookService.checkoutBook(userEmail, bookId);
@@ -38,7 +41,7 @@ public int currentLoansCount(@RequestHeader(value = "Authorization") String toke
     @GetMapping("/secure/ischeckoutedout/byuser")
     public boolean checkoutBookByUser(@RequestParam Long bookId,@RequestHeader(value = "Authorization") String token) {
 //Remember this is to check if the user has already checked out the book
-        String userEmail = "testuser@email.com";
+        String userEmail = ExtractJwt.extractJwtToken(token, "sub"); //To get the user's email
         return bookService.checkoutBookByUser(userEmail, bookId);
 
     }
