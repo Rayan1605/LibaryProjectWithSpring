@@ -40,7 +40,8 @@ public int currentLoansCount(@RequestHeader(value = "Authorization") String toke
     @GetMapping("/secure/ischeckoutedout/byuser")
     public boolean checkoutBookByUser(@RequestParam Long bookId,@RequestHeader(value = "Authorization") String token) {
 //Remember this is to check if the user has already checked out the book
-        String userEmail = ExtractJwt.extractJwtExtraction(token, "sub"); //To get the user's email
+        String userEmail = ExtractJwt.extractJwtExtraction(token, "sub");
+        //Above is To get the user's email
         return bookService.checkoutBookByUser(userEmail, bookId);
 
     }
