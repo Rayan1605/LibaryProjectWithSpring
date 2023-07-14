@@ -19,7 +19,6 @@ public class ExtractJwt {
 
         //Now we are looking for the key of sub of extraction
 
-
         for (String entry : entries) {
             //We are looping through the entries array to find the value of sub
             // which consists of the user's email
@@ -37,7 +36,7 @@ public class ExtractJwt {
                 map.put(keyValue[0], keyValue[1]);
             }
         }
-if (map.containsKey(extraction)) { // if the map contains the key of sub then return the VALUR of
+if (map.containsKey(extraction)) { // if the map contains the key of sub then return the VALUE of
     // sub
     return map.get(extraction);
     }
@@ -46,7 +45,7 @@ if (map.containsKey(extraction)) { // if the map contains the key of sub then re
     }
 
     private static String ExtractPayload(String header) {
-       header =  header.replace("Bearer", "");
+       header =  header.replace("Bearer", "");//This is to remove the Bearer part of the token
         String[] parts = header.split("\\.");//This is to split the token into 3 parts
         // the first part is the header, the second part is the payload, and the third part is the signature
         // the // is to escape the "."
