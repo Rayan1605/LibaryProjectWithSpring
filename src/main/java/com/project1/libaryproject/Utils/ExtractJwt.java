@@ -9,16 +9,6 @@ public class ExtractJwt {
     public static String extractJwtToken(String header,String extraction) {
         //extraction is the key we are looking for
         //so can be the sub or the email
-        header.replace("Bearer", "").trim();
-        String[] parts = header.split("\\.");//This is to split the token into 3 parts
-        // the first part is the header, the second part is the payload, and the third part is the signature
-        // the // is to escape the "."
-        // because it's a special character
-
-        Base64.Decoder decoder = Base64.getUrlDecoder(); //This is to decode the token
-        String payload = new String(decoder.decode(parts[1]));
-        //Above is written so we can get just the payload part of the token
-        // And ignore the header and the signature
 
         String[] entries = ExtractPayload(header).split(",");
 
@@ -56,7 +46,7 @@ if (map.containsKey(extraction)) { // if the map contains the key of sub then re
     }
 
     private static String ExtractPayload(String header) {
-    header.
+       header =  header.replace("Bearer", "");
         String[] parts = header.split("\\.");//This is to split the token into 3 parts
         // the first part is the header, the second part is the payload, and the third part is the signature
         // the // is to escape the "."
@@ -65,7 +55,7 @@ if (map.containsKey(extraction)) { // if the map contains the key of sub then re
         Base64.Decoder decoder = Base64.getUrlDecoder(); //This is to decode the token
         //Above is written so we can get just the payload part of the token
         // And ignore the header and the signature
-   return new String(decoder.decode(parts[1]));
+        return new String(decoder.decode(parts[1]));
     }
 
 }
