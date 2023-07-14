@@ -31,8 +31,8 @@ public int currentLoansCount(@RequestHeader(value = "Authorization") String toke
     // role of user can access this
     //Put is referring to updating the book
     public Book checkoutBook(@RequestParam Long bookId,
-                             @RequestHeader(value = "Authorization") String token)
-            throws Exception {
+                             @RequestHeader(value = "Authorization") String token) throws Exception
+    {
 
         String userEmail = ExtractJwt.extractJwtExtraction(token, "sub");
         //Above is To get the user's email
