@@ -30,6 +30,8 @@ public class ExtractJwt {
             if (keyValue[0].equals("\"sub\"")) { // the slash is referring to the double quotes
                 // because the key is in double quotes
                 int remove = 1;
+                //Then we had the key but for the value we need to remove the double quotes
+                // or anything extra so the value is ONLY the email
                 if (keyValue[1].endsWith("}")) {
                     remove = 2;
                 }
@@ -39,7 +41,8 @@ public class ExtractJwt {
             }
 
         }
-if (map.containsKey("\"sub\"")) {
+if (map.containsKey("\"sub\"")) { // if the map contains the key of sub then return the VALUR of
+    // sub
     return map.get("\"sub\"");
     }
     return null;
