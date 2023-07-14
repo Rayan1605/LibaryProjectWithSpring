@@ -21,7 +21,7 @@ public class SecurityConfiguration {
         http.csrf(csrf -> csrf.disable());
 
         // Protect endpoints at /api/<type>/secure
-        http.authorizeHttpRequests(configurer -> //authorizeRequests is a method that takes a configurer,
+        http.authorizeHttpRequests(configurer -> //authorizeRequests is a method that takes a configurer;
                 // however, it deprecated,
                         // so we have to use the below method
 
