@@ -41,9 +41,9 @@ public class ExtractJwt {
             }
 
         }
-if (map.containsKey("\"sub\"")) { // if the map contains the key of sub then return the VALUR of
+if (map.containsKey(extraction)) { // if the map contains the key of sub then return the VALUR of
     // sub
-    return map.get("\"sub\"");
+    return map.get(extraction);
     }
     return null;
 
