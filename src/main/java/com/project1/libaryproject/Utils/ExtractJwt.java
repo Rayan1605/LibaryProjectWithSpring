@@ -9,7 +9,7 @@ public class ExtractJwt {
     public static String extractJwtExtraction(String header, String extraction) {
         //extraction is the key we are looking for
         //so can be the sub or the email
-
+         //Extracting the payload from the token
         String[] entries = ExtractPayload(header).split(",");
 
         //So every element in the payload will be it own element in the array
