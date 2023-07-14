@@ -21,7 +21,7 @@ public class SecurityConfiguration {
         //Cross Site Request Forgery is an
         // attack that forces an end user to execute unwanted actions on a web application
 
-        http.csrf(csrf -> csrf.disable());
+        http.csrf((csrf) -> csrf.ignoringRequestMatchers("/api/**"));
 
         // Protect endpoints at /api/<type>/secure
         http.authorizeHttpRequests(configurer -> //authorizeRequests is a method that takes a configurer;
