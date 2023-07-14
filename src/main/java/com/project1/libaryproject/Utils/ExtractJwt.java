@@ -57,7 +57,7 @@ public class ExtractJwt {
         //The Bottom is written, so we can get just the payload part of the token
         // And ignore the header and the signature
         return new String(decoder.decode(parts[1])); //since the payload is the second part
-        // and array starts at 0 so that is why we are using 1
+        // and an array starts at 0 so that is why we are using 1
     }
 
 }
