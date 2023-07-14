@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ExtractJwt {
-    //This is because the token starts with Bearer and then the token so we need to take it off
+    //This is because the token starts with the Bearer and then the token, so we need to take it off
     public static String extractJwtExtraction(String header, String extraction) {
         //extraction is the key we are looking for
         //so can be the sub or the email
