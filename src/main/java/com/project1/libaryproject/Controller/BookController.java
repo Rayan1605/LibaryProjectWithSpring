@@ -30,6 +30,7 @@ public int currentLoansCount(@RequestHeader(value = "Authorization") String toke
     @PutMapping("/secure/checkout") // the secure mean only a user with a
     // role of user can access this
     //Put is referring to updating the book
+    //The secure we set up in the okta in the utils folder
     public Book checkoutBook(@RequestParam Long bookId,
                              @RequestHeader(value = "Authorization") String token) throws Exception
     {
