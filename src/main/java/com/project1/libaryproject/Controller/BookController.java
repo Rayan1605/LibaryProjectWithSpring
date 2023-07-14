@@ -45,6 +45,7 @@ public int currentLoansCount(@RequestHeader(value = "Authorization") String toke
     @GetMapping("/secure/ischeckoutedout/byuser")
     public boolean checkoutBookByUser(@RequestParam Long bookId,
                                       @RequestHeader(value = "Authorization") String token) {
+        ////The secure we set up in the okta in the utils folder
 //Remember this is to check if the user has already checked out the book
         String userEmail = ExtractJwt.extractJwtExtraction(token, "sub");
         //Above is To get the user's email
