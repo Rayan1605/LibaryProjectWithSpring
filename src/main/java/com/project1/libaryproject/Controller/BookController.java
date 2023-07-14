@@ -33,7 +33,8 @@ public int currentLoansCount(@RequestHeader(value = "Authorization") String toke
                              @RequestHeader(value = "Authorization") String token)
             throws Exception {
 
-        String userEmail = "testuser@email.com";
+        String userEmail = ExtractJwt.extractJwtExtraction(token, "sub");
+        //Above is To get the user's email
         return bookService.checkoutBook(userEmail, bookId);
     }
 
