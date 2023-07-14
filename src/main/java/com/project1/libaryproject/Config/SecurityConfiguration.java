@@ -18,6 +18,9 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         // Disable Cross Site Request Forgery
+        //Cross Site Request Forgery is an
+        // attack that forces an end user to execute unwanted actions on a web application
+
         http.csrf(csrf -> csrf.disable());
 
         // Protect endpoints at /api/<type>/secure
