@@ -45,9 +45,11 @@ public class ExtractJwt {
     }
 
     private static String ExtractPayload(String header) {
-       header =  header.replace("Bearer", "");//This is to remove the Bearer part of the token
+       header =  header.replace("Bearer", "");//This is to remove the Bearer part
+        // of the token
         String[] parts = header.split("\\.");//This is to split the token into 3 parts
-        // the first part is the header, the second part is the payload, and the third part is the signature
+        // the first part is the header, the second part is the payload, and the third part is the
+        // signature
         // the // is to escape the "."
         // because it's a special character
 
