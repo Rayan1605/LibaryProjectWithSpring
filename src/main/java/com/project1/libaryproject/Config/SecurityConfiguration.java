@@ -28,7 +28,18 @@ public class SecurityConfiguration {
 //
 //This ignores CSRF protection for specific ant pattern matchers,
 // rather than disabling it completely.
-      //
+
+      //So instead of .disable(), you call .ignoringAntMatchers() and
+        // pass in ant-style patterns for URLs you want to ignore CSRF protection on.
+        //
+        //This is considered more secure than globally disabling CSRF protection.
+        // It allows you to keep CSRF checks on sensitive endpoints,
+        // while excluding REST API endpoints that don't use session state
+        // and are typically protected by other means like OAuth.
+        //
+        //The key is to use ant matchers to selectively ignore CSRF for specific URLs
+        // rather than disabling it completely. This maintains security while excluding
+        // APIs that don't need CSRF checks.
 
 
 
