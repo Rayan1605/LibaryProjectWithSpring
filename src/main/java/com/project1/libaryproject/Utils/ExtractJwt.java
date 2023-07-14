@@ -21,9 +21,11 @@ public class ExtractJwt {
         String[] entries = payload.split(",");
         //So every element in the payload will be it own element in the array
 
-        Map<String, String> map = new HashMap<>();
+        Map<String, String> map = new HashMap<>();// This is to store the key value pairs
 
         for (String entry : entries) {
+            //We are looping through the entries array to find the value of sub
+            // which consists of the user's email
             String[] keyValue = entry.split(":");
             if (keyValue[0].equals("\"sub\"")) { // the slash is referring to the double quotes
                 // because the key is in double quotes
