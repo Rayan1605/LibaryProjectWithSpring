@@ -9,7 +9,7 @@ public class ExtractJwt {
     public static String extractJwtExtraction(String header, String extraction) {
         //extraction is the key we are looking for
         //so can be the sub or the email
-         //Extracting the payload from the token
+        //Extracting the payload from the token
         String[] entries = ExtractPayload(header).split(",");
 
         //So every element in the payload will be it own element in the array
@@ -36,11 +36,11 @@ public class ExtractJwt {
                 map.put(keyValue[0], keyValue[1]);
             }
         }
-if (map.containsKey(extraction)) { // if the map contains the key of sub then return the VALUE of
-    // sub
-    return map.get(extraction);
-    }
-    return null;
+        if (map.containsKey(extraction)) { // if the map contains the key of sub then return the VALUE of
+            // sub
+            return map.get(extraction);
+        }
+        return null;
 
     }
 
