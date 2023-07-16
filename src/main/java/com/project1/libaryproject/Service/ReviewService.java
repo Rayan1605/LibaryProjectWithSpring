@@ -26,8 +26,12 @@ public class ReviewService {
         review.setRating(reviewRequest.getRating());
         if (reviewRequest.getReviewDescription().isPresent()) { //because remember review description is
             // optional so we first need to check if it is present or null if it is present then we will set the
-            // review description
-            review.setReviewDecription(reviewRequest.getReviewDescription().get());
+            // so since reviewRequest is actually  Optional<String>
+            // we need to do it differently and use the map function
+            // so we will use the map function to convert the Optional<String> to String
+            review.setReviewDecription(reviewRequest.getReviewDescription().map(
+                    Object::toString).orElse(null));
+
         }
     }
 }
