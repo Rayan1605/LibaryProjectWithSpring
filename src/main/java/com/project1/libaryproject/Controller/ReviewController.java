@@ -35,8 +35,10 @@ if(userEmail == null) {throw new Exception("You are not logged in");}
 
     }
 
-    private String CheckJwt(String token){
-
+    private String CheckJwt(String token) throws Exception{
+        String userEmail = ExtractJwt.extractJwtExtraction(token, "\"sub\"");
+        if (userEmail == null) {throw new Exception("You are not logged in");}
+        return userEmail;
     }
 
 }
