@@ -1,4 +1,9 @@
 package com.project1.libaryproject.ResponseModel;
 
-public interface CurrentLoans {
+import lombok.Data;
+
+@Data
+public class CurrentLoans {
+
+
 }
