@@ -20,6 +20,10 @@ public class ReviewController {
                                                 String token,
                                             @RequestParam Long bookId) throws Exception {
 String userEmail = ExtractJwt.extractJwtExtraction(token, "\"sub\"");
+if(!userEmail){
+    throw new Exception("User Email is Missing");
+}
+
 
     }
     @PostMapping("/secure")
