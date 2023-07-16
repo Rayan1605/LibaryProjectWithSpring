@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Date;
+
 @Service
 @AllArgsConstructor
 @Transactional //  commits the transaction after the method completes successfully.
@@ -33,6 +35,7 @@ public class ReviewService {
                     Object::toString).orElse(null));
 
         }
+review.setDate(Date.valueOf(java.time.LocalDate.now()));
 
     }
 }
