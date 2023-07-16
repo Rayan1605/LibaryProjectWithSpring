@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional //  commits the transaction after the method completes successfully.
 // If an exception is thrown, the transaction will be rolled back.
 public class ReviewService {
-
     private final ReviewRepository reviewRepository;
     private final BookRepository bookRepository;
 }
