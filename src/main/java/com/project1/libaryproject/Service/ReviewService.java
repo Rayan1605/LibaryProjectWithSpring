@@ -2,6 +2,7 @@ package com.project1.libaryproject.Service;
 
 import com.project1.libaryproject.DAO.BookRepository;
 import com.project1.libaryproject.DAO.ReviewRepository;
+import com.project1.libaryproject.RequestModels.ReviewRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,5 +15,7 @@ public class ReviewService {
     private final ReviewRepository reviewRepository;
     private final BookRepository bookRepository;
 
-    public void postReview(String userEmail,)
+    public void postReview(String userEmail, ReviewRequest reviewRequest) throws Exception{
+
+    }
 }
