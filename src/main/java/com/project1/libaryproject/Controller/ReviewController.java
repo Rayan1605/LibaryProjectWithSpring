@@ -1,5 +1,6 @@
 package com.project1.libaryproject.Controller;
 
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,7 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 // to access the api
 @RestController //This is to tell spring that this is a controller
 @RequestMapping("/api/reviews") //This is to tell spring that this is the path
+@AllArgsConstructor
 public class ReviewController {
 
-    private R
+    private ReviewController reviewController;
+
 }
