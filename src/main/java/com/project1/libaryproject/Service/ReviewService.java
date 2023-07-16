@@ -35,10 +35,8 @@ public class ReviewService {
                     Object::toString).orElse(null));
 
         }
-review.setDate(Date.valueOf(java.time.LocalDate.now())); //getting the current time
-review.setUser_email(userEmail);
-
-
+        review.setDate(Date.valueOf(java.time.LocalDate.now())); //getting the current time
+        review.setUser_email(userEmail);
 
     }
 }
