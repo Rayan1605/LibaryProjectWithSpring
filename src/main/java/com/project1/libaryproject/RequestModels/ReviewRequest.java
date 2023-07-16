@@ -8,6 +8,6 @@ import java.util.Optional;
 public class ReviewRequest {
 private Long bookId;
 private double rating;
-private Optional
+private Optional<String> reviewDescription;
 
 }
