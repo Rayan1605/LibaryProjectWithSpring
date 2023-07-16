@@ -24,7 +24,9 @@ public class ReviewService {
 
   review.setBookId(reviewRequest.getBookId());
     review.setRating(reviewRequest.getRating());
-    review.setReviewDecription(reviewRequest.getReviewDecription());
-
-    }
+  if (reviewRequest.getReviewDescription().isPresent()){ //because remember review description is
+      // optional so we first need to check if it is present or null if it is present then we will set the
+      // review description
+       review.setReviewDecription(reviewRequest.getReviewDescription().get());
+  }
 }
