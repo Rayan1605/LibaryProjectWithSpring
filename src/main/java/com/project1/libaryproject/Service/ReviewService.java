@@ -24,6 +24,7 @@ public class ReviewService {
 
   review.setBookId(reviewRequest.getBookId());
     review.setRating(reviewRequest.getRating());
+    review.setReviewDecription(reviewRequest.getReviewDecription());
 
     }
 }
