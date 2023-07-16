@@ -16,7 +16,6 @@ import java.sql.Date;
 // If an exception is thrown, the transaction will be rolled back.
 public class ReviewService {
     private final ReviewRepository reviewRepository;
-    private final BookRepository bookRepository;
 
     public void postReview(String userEmail, ReviewRequest reviewRequest) throws Exception {
         Review Validate = reviewRepository.findByuserEmailAndBookId(userEmail, reviewRequest.getBookId());
