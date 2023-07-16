@@ -18,7 +18,7 @@ public class ReviewController {
     public void postReview(@RequestHeader(value = "Authorization") String token,
                            @RequestBody ReviewRequest reviewRequest) throws Exception {
      String userEmail = ExtractJwt.extractJwtExtraction(token, "\"sub\"");
-     if (userEmail == null) throw new Exception("You are not logged in");
+     if (userEmail == null) {throw new Exception("You are not logged in");}
 
         reviewController.postReview(userEmail, reviewRequest);
 
