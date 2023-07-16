@@ -44,7 +44,6 @@ public class ReviewService {
 
     public Boolean checkIfUserHasAlreadyLeftAReview(String userEmail, Long bookId) {
         Review review = reviewRepository.findByuserEmailAndBookId(userEmail, bookId);
-        System.out.println(review);
-      //  return review != null;
+        return review != null;
     }
 }
