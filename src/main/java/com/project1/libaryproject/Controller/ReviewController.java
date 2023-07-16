@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.*;
 public class ReviewController {
 
     private ReviewController reviewController;
-    //Below we are getting the token from the header and passing it to the method
+
 
 
 
     @PostMapping("/secure")
     public void postReview(@RequestHeader(value = "Authorization") String token,
                            @RequestBody ReviewRequest reviewRequest) throws Exception {
-        String userEmail = reviewController.extractJwt.extractJwtExtraction(token, "sub");
+
 
     }
 }
