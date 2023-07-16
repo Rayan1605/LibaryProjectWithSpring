@@ -23,8 +23,6 @@ String userEmail = ExtractJwt.extractJwtExtraction(token, "\"sub\"");
 if(userEmail == null) {throw new Exception("You are not logged in");}
         return reviewController.CheckingUserReviewedBook(userEmail, bookId);
 
-
-    throw new Exception("User Email is Missing");
 }
 
     @PostMapping("/secure")
@@ -34,6 +32,12 @@ if(userEmail == null) {throw new Exception("You are not logged in");}
      if (userEmail == null) {throw new Exception("You are not logged in");}
 
         reviewController.postReview(userEmail, reviewRequest);
+
+    }
+
+    private String CheckJwt(String token){
+        return null;
+    }
 
     }
 }
