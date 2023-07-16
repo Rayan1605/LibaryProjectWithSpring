@@ -42,5 +42,8 @@ public class ReviewService {
     }
     // Going to see if a user already legt a review for a book and make it available for react to see
 
-    public boolean user
+    public Boolean checkIfUserHasAlreadyLeftAReview(String userEmail, Long bookId) {
+        Review review = reviewRepository.findByuserEmailAndBookId(userEmail, bookId);
+      //  return review != null;
+    }
 }
