@@ -12,11 +12,10 @@ import java.sql.Date;
 
 @Service
 @AllArgsConstructor
-@Transactional //  commits the transaction after the method completes successfully.
+@Transactional //  Commits the transaction after the method completes successfully.
 // If an exception is thrown, the transaction will be rolled back.
 public class ReviewService {
     private final ReviewRepository reviewRepository;
-    private final BookRepository bookRepository;
 
     public void postReview(String userEmail, ReviewRequest reviewRequest) throws Exception {
         Review Validate = reviewRepository.findByuserEmailAndBookId(userEmail, reviewRequest.getBookId());
@@ -35,10 +34,15 @@ public class ReviewService {
                     Object::toString).orElse(null));
 
         }
-review.setDate(Date.valueOf(java.time.LocalDate.now())); //getting the current time
-review.setUser_email(userEmail);
+        review.setDate(Date.valueOf(java.time.LocalDate.now())); //getting the current time
+        review.setUser_email(userEmail);
+        reviewRepository.save(review);
 
+    }
+    // Going to see if a user already legt a review for a book and make it available for react to see
 
-
+    public Boolean checkIfUserHasAlreadyLeftAReview(String userEmail, Long bookId) {
+        Review review = reviewRepository.findByuserEmailAndBookId(userEmail, bookId);
+        return review != null;
     }
 }
