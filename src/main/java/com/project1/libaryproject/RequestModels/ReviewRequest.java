@@ -8,6 +8,7 @@ import java.util.Optional;
 public class ReviewRequest {
 private Long bookId;
 private double rating;
-private Optional<String> reviewDescription;
+private Optional<String> reviewDescription; //because this is not mandoatory
+
 
 }
