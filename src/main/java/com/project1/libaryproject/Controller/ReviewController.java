@@ -17,7 +17,7 @@ public class ReviewController {
     @PostMapping("/secure")
     public void postReview(@RequestHeader(value = "Authorization") String token,
                            @RequestBody ReviewRequest reviewRequest) throws Exception {
-     String userEmail = ReviewRequest
+     String userEmail = ExtractJwt.extractJwtExtraction(token, "sub");
 
     }
 }
