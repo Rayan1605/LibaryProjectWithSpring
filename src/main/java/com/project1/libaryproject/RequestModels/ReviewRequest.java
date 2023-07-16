@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class ReviewRequest {
-private Long BookId;
+private Long bookId;
 
 }
