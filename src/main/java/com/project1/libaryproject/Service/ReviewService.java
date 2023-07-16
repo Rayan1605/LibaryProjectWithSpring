@@ -2,6 +2,7 @@ package com.project1.libaryproject.Service;
 
 import com.project1.libaryproject.DAO.BookRepository;
 import com.project1.libaryproject.DAO.ReviewRepository;
+import com.project1.libaryproject.Entity.Review;
 import com.project1.libaryproject.RequestModels.ReviewRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,6 @@ public class ReviewService {
     private final BookRepository bookRepository;
 
     public void postReview(String userEmail, ReviewRequest reviewRequest) throws Exception{
-
+        Review Validate = reviewRepository.findByuserEmailAndBookId(userEmail, reviewRequest.getBookId());
     }
 }
