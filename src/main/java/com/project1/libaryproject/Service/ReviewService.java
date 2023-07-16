@@ -37,6 +37,10 @@ public class ReviewService {
         }
         review.setDate(Date.valueOf(java.time.LocalDate.now())); //getting the current time
         review.setUser_email(userEmail);
+        reviewRepository.save(review);
 
     }
+    // Going to see if a user already legt a review for a book and make it available for react to see
+
+    public boolean user
 }
