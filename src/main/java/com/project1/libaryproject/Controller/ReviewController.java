@@ -20,12 +20,13 @@ public class ReviewController {
                                                 String token,
                                             @RequestParam Long bookId) throws Exception {
 String userEmail = ExtractJwt.extractJwtExtraction(token, "\"sub\"");
-if(!userEmail){
+if(userEmail == null) {throw new Exception("You are not logged in");}
+        return reviewController.CheckingUserReviewedBook(userEmail, bookId);
+
+
     throw new Exception("User Email is Missing");
 }
 
-
-    }
     @PostMapping("/secure")
     public void postReview(@RequestHeader(value = "Authorization") String token,
                            @RequestBody ReviewRequest reviewRequest) throws Exception {
