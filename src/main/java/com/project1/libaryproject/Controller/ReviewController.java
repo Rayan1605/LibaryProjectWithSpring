@@ -1,5 +1,6 @@
 package com.project1.libaryproject.Controller;
 
+import com.project1.libaryproject.RequestModels.ReviewRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +14,8 @@ public class ReviewController {
     private ReviewController reviewController;
 
     @PostMapping("/secure")
-    public void postReview(@RequestHeader(value = "Authorization") String token) {
+    public void postReview(@RequestHeader(value = "Authorization") String token,
+                           @RequestBody ReviewRequest reviewRequest) throws Exception {
 
     }
 }
