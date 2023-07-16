@@ -14,6 +14,7 @@ public class ReviewController {
 
     private ReviewController reviewController;
 
+    @GetMapping("/secure/user/book")
     @PostMapping("/secure")
     public void postReview(@RequestHeader(value = "Authorization") String token,
                            @RequestBody ReviewRequest reviewRequest) throws Exception {
