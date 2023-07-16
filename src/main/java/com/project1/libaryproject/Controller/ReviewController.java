@@ -27,7 +27,7 @@ public class ReviewController {
     public void postReview(@RequestHeader(value = "Authorization") String token,
                            @RequestBody ReviewRequest reviewRequest) throws Exception {
 
-        reviewController.postReview(userEmail, reviewRequest);
+        reviewController.postReview(CheckJwt(token), reviewRequest);
 
     }
 
