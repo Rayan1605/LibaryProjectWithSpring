@@ -15,7 +15,11 @@ public class ReviewController {
     private ReviewController reviewController;
 
     @GetMapping("/secure/user/book")
-    public boolean
+    //CheckingIfUserHasAlreadyReviewedTheBook
+    public boolean CheckingUserReviewedBook(@RequestHeader(value = "Authorization")
+                                                String token,
+                                            @RequestParam Long bookId) throws Exception {
+    }
     @PostMapping("/secure")
     public void postReview(@RequestHeader(value = "Authorization") String token,
                            @RequestBody ReviewRequest reviewRequest) throws Exception {
