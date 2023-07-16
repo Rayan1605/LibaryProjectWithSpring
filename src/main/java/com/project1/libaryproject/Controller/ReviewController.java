@@ -19,9 +19,7 @@ public class ReviewController {
     public boolean CheckingUserReviewedBook(@RequestHeader(value = "Authorization")
                                                 String token,
                                             @RequestParam Long bookId) throws Exception {
-String userEmail = ExtractJwt.extractJwtExtraction(token, "\"sub\"");
-if(userEmail == null) {throw new Exception("You are not logged in");}
-        return reviewController.CheckingUserReviewedBook(userEmail, bookId);
+        return reviewController.CheckingUserReviewedBook(CheckJwt(token), bookId);
 
 }
 
