@@ -9,6 +9,6 @@ public class ReviewRequest {
 private Long bookId;
 private double rating;
 private Optional<String> reviewDescription; //because this is not mandatory
-//We will use Optional It is often used as a return type for methods that may return null.
+//We will use Optional since It is often used as a return type for methods that may return null.
 
 }
