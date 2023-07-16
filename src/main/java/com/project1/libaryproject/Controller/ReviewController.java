@@ -36,8 +36,7 @@ if(userEmail == null) {throw new Exception("You are not logged in");}
     }
 
     private String CheckJwt(String token){
-        return null;
-    }
 
     }
+
 }
