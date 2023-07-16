@@ -16,17 +16,18 @@ public class ReviewService {
     private final ReviewRepository reviewRepository;
     private final BookRepository bookRepository;
 
-    public void postReview(String userEmail, ReviewRequest reviewRequest) throws Exception{
+    public void postReview(String userEmail, ReviewRequest reviewRequest) throws Exception {
         Review Validate = reviewRepository.findByuserEmailAndBookId(userEmail, reviewRequest.getBookId());
 
-  if (Validate != null) throw new Exception("You have already posted a review for this book");
-  Review review = new Review();
+        if (Validate != null) throw new Exception("You have already posted a review for this book");
+        Review review = new Review();
 
-  review.setBookId(reviewRequest.getBookId());
-    review.setRating(reviewRequest.getRating());
-  if (reviewRequest.getReviewDescription().isPresent()){ //because remember review description is
-      // optional so we first need to check if it is present or null if it is present then we will set the
-      // review description
-       review.setReviewDecription(reviewRequest.getReviewDescription().get());
-  }
+        review.setBookId(reviewRequest.getBookId());
+        review.setRating(reviewRequest.getRating());
+        if (reviewRequest.getReviewDescription().isPresent()) { //because remember review description is
+            // optional so we first need to check if it is present or null if it is present then we will set the
+            // review description
+            review.setReviewDecription(reviewRequest.getReviewDescription().get());
+        }
+    }
 }
