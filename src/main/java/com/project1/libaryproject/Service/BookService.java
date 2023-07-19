@@ -96,8 +96,8 @@ public class BookService {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
         for(Book book: books){
-            // Each book in our checkoutList we are going to look for the book in our book list
-            // and once we find it then we can end the loop and check
+            // Each book in our checkoutList we are going to look for the book in our book list,
+            // and once we find it then we can end the loop and check to see if the book is overdue
             Optional<Checkout> checkout = checkoutList.stream().
                     filter(x-> x.getBookId().equals(book.getId())).findFirst();
 
