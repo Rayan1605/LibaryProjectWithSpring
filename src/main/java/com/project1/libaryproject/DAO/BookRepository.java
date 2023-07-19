@@ -35,6 +35,8 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     //IN - Checks if the id is IN the given list
     //:book_ids - This is the query parameter that will be populated with the bookIds list
 
+    // So basically this query will select all the books where the id is in the
+    // given list of bookIds
     @Query("SELECT b FROM Book b WHERE b.id IN :book_ids")
     List<Book> findBooksByBookIds(@Param("book_ids") List<Long> bookIds);
 }
