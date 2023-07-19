@@ -92,6 +92,8 @@ public class BookService {
             // and once we find it, then we can end the loop and check to see if the book is overdue
             Optional<Checkout> checkout = checkoutList.stream().
                     filter(x-> x.getBookId().equals(book.getId())).findFirst();
+
+
                if(checkout.isPresent()){
                    Date return_Date = formatter.parse(checkout.get().getReturn_date());
                      Date today = formatter.parse(LocalDate.now().toString());
