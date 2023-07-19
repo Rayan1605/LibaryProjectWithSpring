@@ -96,7 +96,8 @@ public class BookService {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
         for(Book book: books){
-            Optional<Checkout> checkout = checkoutList.stream().filter(() )
+            Optional<Checkout> checkout = checkoutList.stream().
+                    filter(x-> x.getBookId().equals(book.getId()).findFirst());
 
         }
     }
