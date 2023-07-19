@@ -81,38 +81,46 @@ public class BookService {
     }
 
     public List<CurrentLoans> getCurrentLoans(String userEmail) throws Exception {
-        List<CurrentLoans> currentLoans = new ArrayList<>();
-        //So here we are going to get all the books that the user has checked out
-        //However we can only get the book ids
-
         List<Checkout> checkoutList = checkOutRepository.findByUserEmail(userEmail);
 
-        List<Long> bookIds = new ArrayList<>();
-// We are going to get all the book ids that the user has checked out
-        for (Checkout checkout : checkoutList) {
-            bookIds.add(checkout.getBookId());
-        }
-  List<Book> books = bookRepository.findBooksByBookIds(bookIds);
-
+        List<Book> books = getBooks(checkoutList);
         //Going to check if the book is overdue and how long it is
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
         for(Book book: books){
             // Each book in our checkoutList we are going to look for the book in our book list,
-            // and once we find it then we can end the loop and check to see if the book is overdue
+            // and once we find it, then we can end the loop and check to see if the book is overdue
             Optional<Checkout> checkout = checkoutList.stream().
                     filter(x-> x.getBookId().equals(book.getId())).findFirst();
                if(checkout.isPresent()){
                    Date return_Date = formatter.parse(checkout.get().getReturn_date());
                      Date today = formatter.parse(LocalDate.now().toString());
                    TimeUnit timeUnit = TimeUnit.DAYS;
-                     long diff = timeUnit.convert(return_Date.getTime() - today.getTime(), TimeUnit.MILLISECONDS);
+                     long diff = timeUnit.convert(return_Date.getTime() - today.getTime(),
+                             TimeUnit.MILLISECONDS);
                        currentLoans.add(new CurrentLoans(book, (int)diff));
 
                }
         }
         return currentLoans;
     }
+
+    public List<Book> getBooks(List<Checkout> checkoutList) {
+        //So here we are going to get all the books that the user has checked out,
+        //However, we can only get the book ids
+
+
+
+        List<Long> bookIds = new ArrayList<>();
+// We are going to get all the book ids that the user has checked out
+        for (Checkout checkout : checkoutList) {
+            bookIds.add(checkout.getBookId());
+        }
+        return bookRepository.findBooksByBookIds(bookIds);
+
+
+    }
+
 }
 
 
