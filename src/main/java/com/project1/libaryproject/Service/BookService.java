@@ -85,7 +85,7 @@ public class BookService {
         List<Checkout> checkoutList = checkOutRepository.findByUserEmail(userEmail);
 
         List<Long> bookIds = new ArrayList<>();
-
+// We are going to get all the book ids that the user has checked out
         for (Checkout checkout : checkoutList) {
             bookIds.add(checkout.getBookId());
         }
