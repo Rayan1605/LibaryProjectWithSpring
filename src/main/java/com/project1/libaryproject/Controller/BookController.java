@@ -1,11 +1,14 @@
 package com.project1.libaryproject.Controller;
 
 import com.project1.libaryproject.Entity.Book;
+import com.project1.libaryproject.ResponseModel.CurrentLoans;
 import com.project1.libaryproject.Service.BookService;
 import com.project1.libaryproject.Utils.ExtractJwt;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")//This is to allow the React app
 // to access the api
@@ -50,6 +53,12 @@ public int currentLoansCount(@RequestHeader(value = "Authorization") String toke
         String userEmail = ExtractJwt.extractJwtExtraction(token, "sub");
         //Above is To get the user's email
         return bookService.checkoutBookByUser(userEmail, bookId);
+
+    }
+
+    @GetMapping("/secure/currentloans")
+    public List<CurrentLoans> currentLoans (@RequestMapping(value = "Authorization") String token){
+
 
     }
 }
