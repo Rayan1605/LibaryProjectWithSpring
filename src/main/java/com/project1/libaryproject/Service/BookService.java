@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 @Service
 @Transactional
@@ -104,6 +105,9 @@ public class BookService {
 
                if(checkout.isPresent()){
                    Date return_Date = formatter.parse(checkout.get().getReturn_date());
+                     Date today = formatter.parse(LocalDate.now().toString());
+                   TimeUnit timeUnit = TimeUnit.DAYS;
+                     long diff = timeUnit.convert(return_Date.getTime() - today.getTime(), TimeUnit.MILLISECONDS);
                }
 
         }
