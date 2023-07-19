@@ -80,9 +80,16 @@ public class BookService {
     public List<CurrentLoans> getCurrentLoans(String userEmail) throws Exception {
         List<CurrentLoans> currentLoans = new ArrayList<>();
         //So here we are going to get all the books that the user has checked out
-        //But it's only going to give us the books id
+
 
         List<Checkout> checkoutList = checkOutRepository.findByUserEmail(userEmail);
+
+        List<Long> bookIds = new ArrayList<>();
+
+        for (Checkout checkout : checkoutList) {
+            bookIds.add(checkout.getBookId());
+        }
+
     }
 }
 
