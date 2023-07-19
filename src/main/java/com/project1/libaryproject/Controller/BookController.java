@@ -57,7 +57,9 @@ public int currentLoansCount(@RequestHeader(value = "Authorization") String toke
     }
 
     @GetMapping("/secure/currentloans")
-    public List<CurrentLoans> currentLoans (@RequestMapping(value = "Authorization") String token){
+    public List<CurrentLoans> currentLoans (@RequestHeader(value = "Authorization") String token){
+
+
 
 
     }
