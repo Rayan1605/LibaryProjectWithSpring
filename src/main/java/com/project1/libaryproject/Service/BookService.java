@@ -103,7 +103,7 @@ public class BookService {
                     filter(x-> x.getBookId().equals(book.getId())).findFirst();
 
                if(checkout.isPresent()){
-                   Date return = formatter.parse(checkout.get().getReturn_date());
+                   Date return_Date = formatter.parse(checkout.get().getReturn_date());
                }
 
         }
