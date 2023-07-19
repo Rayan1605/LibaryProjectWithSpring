@@ -19,7 +19,9 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     Page<Book> findByCategory(@Param("category") String category, Pageable pageable);
 
     //This method will search for books by category and return a page of books
+//@Query - Defines the JPQL query to execute:
 
-    @Query("select o from Book o where id in :book_ids")
+
+    @Query("SELECT b FROM Book b WHERE b.id IN :book_ids")
     List<Book> findBooksByBookIds(@Param("book_ids") List<Long> bookIds);
 }
