@@ -82,7 +82,7 @@ public class BookService {
 
     public List<CurrentLoans> getCurrentLoans(String userEmail) throws Exception {
         List<Checkout> checkoutList = checkOutRepository.findByUserEmail(userEmail);
-
+        List<CurrentLoans> currentLoans = new ArrayList<>();
         List<Book> books = getBooks(checkoutList);
         //Going to check if the book is overdue and how long it is
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
