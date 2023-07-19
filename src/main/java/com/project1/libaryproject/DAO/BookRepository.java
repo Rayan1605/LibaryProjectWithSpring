@@ -6,6 +6,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface BookRepository extends JpaRepository<Book, Long> {
     //Since Jpa has no Search option we will create a method to search for books by title
     //Which will generate the method at runtime
@@ -15,4 +17,5 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     Page<Book> findByCategory(@Param("category") String category, Pageable pageable);
 
+    List<Book> findBooksByBookIds(@Param("book_ids") List<Long> bookIds);
 }
