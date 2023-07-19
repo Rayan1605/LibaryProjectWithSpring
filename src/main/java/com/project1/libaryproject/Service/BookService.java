@@ -89,7 +89,7 @@ public class BookService {
         for (Checkout checkout : checkoutList) {
             bookIds.add(checkout.getBookId());
         }
-
+  List<Book> books = bookRepository.findByBooksIds(bookIds);
     }
 }
 
