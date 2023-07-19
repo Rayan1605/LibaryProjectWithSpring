@@ -76,7 +76,9 @@ public class BookService {
         return checkOutRepository.findByUserEmail(userEmail).size();
     }
 
-    public List<CurrentLoans>
+    public List<CurrentLoans> getCurrentLoans(String userEmail) {
+        return checkOutRepository.findByUserEmail(userEmail);
+    }
 }
 
 
