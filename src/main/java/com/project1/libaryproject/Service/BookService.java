@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -76,8 +77,8 @@ public class BookService {
         return checkOutRepository.findByUserEmail(userEmail).size();
     }
 
-    public List<CurrentLoans> getCurrentLoans(String userEmail) {
-        return checkOutRepository.findByUserEmail(userEmail);
+    public List<CurrentLoans> getCurrentLoans(String userEmail) throws Exception {
+        List<CurrentLoans> currentLoans = new ArrayList<>();
     }
 }
 
