@@ -92,6 +92,7 @@ public class BookService {
         }
   List<Book> books = bookRepository.findBooksByBookIds(bookIds);
 
+        //Going to check if the book is overdue and how long it is
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     }
 }
