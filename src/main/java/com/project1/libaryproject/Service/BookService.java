@@ -97,7 +97,7 @@ public class BookService {
 
         for(Book book: books){
             Optional<Checkout> checkout = checkoutList.stream().
-                    filter(x-> x.getBookId().equals(book.getId()).findFirst());
+                    filter(x-> x.getBookId().equals(book.getId())).findFirst();
 
         }
     }
