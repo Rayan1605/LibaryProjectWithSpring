@@ -79,6 +79,8 @@ public class BookService {
 
     public List<CurrentLoans> getCurrentLoans(String userEmail) throws Exception {
         List<CurrentLoans> currentLoans = new ArrayList<>();
+
+        List<Checkout> checkoutList = checkOutRepository.findByUserEmail(userEmail);
     }
 }
 
