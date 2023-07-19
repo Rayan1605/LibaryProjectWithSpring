@@ -81,7 +81,7 @@ public class BookService {
     public List<CurrentLoans> getCurrentLoans(String userEmail) throws Exception {
         List<CurrentLoans> currentLoans = new ArrayList<>();
         //So here we are going to get all the books that the user has checked out
-
+        //However we can only get the book ids
 
         List<Checkout> checkoutList = checkOutRepository.findByUserEmail(userEmail);
 
@@ -94,6 +94,11 @@ public class BookService {
 
         //Going to check if the book is overdue and how long it is
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
+        for(Book book: books){
+            Optional<Checkout> checkout = checkoutList
+
+        }
     }
 }
 
