@@ -25,6 +25,15 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 //JPQL gets converted to optimized SQL queries for the underlying database.
 //Provides an object-oriented approach for retrieving entities from a database.
 
+    //Query("SELECT b FROM Book b WHERE b.id IN :book_ids")
+    //
+    //SELECT - This specifies to select data
+    //b - This is an alias for the Book entity
+    //FROM Book b - This specifies to select from the Book entity, using 'b' as the alias
+    //WHERE - This provides a condition for the query
+    //b.id - Refers to the 'id' property of the Book entity
+    //IN - Checks if the id is IN the given list
+    //:book_ids - This is the query parameter that will be populated with the bookIds list
 
     @Query("SELECT b FROM Book b WHERE b.id IN :book_ids")
     List<Book> findBooksByBookIds(@Param("book_ids") List<Long> bookIds);
