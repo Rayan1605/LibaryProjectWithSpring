@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -91,6 +92,7 @@ public class BookService {
         }
   List<Book> books = bookRepository.findBooksByBookIds(bookIds);
 
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     }
 }
 
