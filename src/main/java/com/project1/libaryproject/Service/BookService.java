@@ -4,11 +4,13 @@ import com.project1.libaryproject.DAO.BookRepository;
 import com.project1.libaryproject.DAO.CheckOutRepository;
 import com.project1.libaryproject.Entity.Book;
 import com.project1.libaryproject.Entity.Checkout;
+import com.project1.libaryproject.ResponseModel.CurrentLoans;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -73,6 +75,8 @@ public class BookService {
     public int currentLoansCount(String userEmail) {
         return checkOutRepository.findByUserEmail(userEmail).size();
     }
+
+    public List<CurrentLoans>
 }
 
 
