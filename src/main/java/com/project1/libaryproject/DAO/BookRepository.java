@@ -20,6 +20,10 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     //This method will search for books by category and return a page of books
 //@Query - Defines the JPQL query to execute:
+//JPQL is a query language for JPA that queries entity objects rather than tables.
+//It offers a database independent way to query entities in Java.
+//JPQL gets converted to optimized SQL queries for the underlying database.
+//Provides an object-oriented approach for retrieving entities from a database.
 
 
     @Query("SELECT b FROM Book b WHERE b.id IN :book_ids")
