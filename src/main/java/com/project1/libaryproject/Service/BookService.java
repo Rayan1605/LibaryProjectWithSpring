@@ -4,6 +4,7 @@ import com.project1.libaryproject.Repository.BookRepository;
 import com.project1.libaryproject.Repository.CheckOutRepository;
 import com.project1.libaryproject.Entity.Book;
 import com.project1.libaryproject.Entity.Checkout;
+import com.project1.libaryproject.Repository.HistoryRepository;
 import com.project1.libaryproject.ResponseModel.CurrentLoans;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,7 @@ public class BookService {
     //Using lombok to generate constructor for dependency injection
     private CheckOutRepository checkout;
     private final CheckOutRepository checkOutRepository;
+    private final HistoryRepository historyService;
 
     public Book checkoutBook(String userEmail, Long bookId) throws Exception {
 //This method will checkout a book by a user
