@@ -133,7 +133,6 @@ public class BookService {
         //So one more book is available, and then we save it and delete it from the checkout
         book.get().setAvailable_copies(book.get().getAvailable_copies() + 1);
         bookRepository.save(book.get());
-
         checkOutRepository.delete(checkout);
 
     }
