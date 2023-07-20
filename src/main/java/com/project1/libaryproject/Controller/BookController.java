@@ -85,7 +85,7 @@ public class BookController {
         //request param is to get the book id from the url
 
         String userEmail = CheckJwt(token); //extracting from Jwt
-        bookService.renewLoan(userEmail, bookId);//then returning the book
+        bookService.renewBook(userEmail, bookId);//then returning the book
     }
 
 
