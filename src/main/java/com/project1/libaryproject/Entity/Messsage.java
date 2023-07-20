@@ -21,7 +21,11 @@ private String userEmail;
 private String title;
 @Column(name = "question")
 private String question;
+@Column(name = "admin_email")
+private String adminEmail;
+@Column(name = "response")
+private String response;
 
-
+private boolean closed
 
 }
