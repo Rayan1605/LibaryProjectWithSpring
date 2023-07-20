@@ -1,7 +1,6 @@
 package com.project1.libaryproject.Service;
 
-import com.project1.libaryproject.DAO.BookRepository;
-import com.project1.libaryproject.DAO.ReviewRepository;
+import com.project1.libaryproject.Repository.ReviewRepository;
 import com.project1.libaryproject.Entity.Review;
 import com.project1.libaryproject.RequestModels.ReviewRequest;
 import lombok.AllArgsConstructor;

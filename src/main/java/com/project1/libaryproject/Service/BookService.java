@@ -1,7 +1,7 @@
 package com.project1.libaryproject.Service;
 
-import com.project1.libaryproject.DAO.BookRepository;
-import com.project1.libaryproject.DAO.CheckOutRepository;
+import com.project1.libaryproject.Repository.BookRepository;
+import com.project1.libaryproject.Repository.CheckOutRepository;
 import com.project1.libaryproject.Entity.Book;
 import com.project1.libaryproject.Entity.Checkout;
 import com.project1.libaryproject.ResponseModel.CurrentLoans;
@@ -9,7 +9,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.swing.text.html.Option;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;

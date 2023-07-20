@@ -1,4 +1,4 @@
-package com.project1.libaryproject.DAO;
+package com.project1.libaryproject.Repository;
 
 import com.project1.libaryproject.Entity.Checkout;
 import org.springframework.data.jpa.repository.JpaRepository;
