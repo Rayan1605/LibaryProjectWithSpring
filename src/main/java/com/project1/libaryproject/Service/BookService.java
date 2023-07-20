@@ -137,7 +137,7 @@ public class BookService {
         checkOutRepository.delete(checkout);
 
     }
-    //Implementing the renew book method
+    //Implementing the renewed book method
     //Basically getting the checkout and changing the thing to the current date
     // and return date to + 7 days
     public void renewBook(String userEmail, Long BookId) throws Exception {
