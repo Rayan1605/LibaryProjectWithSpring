@@ -80,9 +80,7 @@ public class BookController {
         bookService.returnBook(userEmail, bookId);//then returning the book
     }
 
-    public void RenewLoan(String userEmail, Long bookId) throws Exception {
-        bookService.renewLoan(userEmail, bookId);
-    }
+
 
 }
 
