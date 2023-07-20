@@ -136,6 +136,9 @@ public class BookService {
         checkOutRepository.delete(checkout);
 
     }
+    //Implementing the renew book method
+    //Basically getting the checkout and changing the thing to the current date
+    // and return date to + 7 days
     public void renewBook(String userEmail, Long BookId) throws Exception {
         Checkout checkout = checkOutRepository.findByUserEmailAndBookId(userEmail, BookId);
         if(checkout == null) throw new Exception("You have not checked out this book");
