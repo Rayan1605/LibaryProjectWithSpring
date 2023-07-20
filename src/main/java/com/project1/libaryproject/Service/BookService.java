@@ -28,7 +28,7 @@ public class BookService {
     //Using lombok to generate constructor for dependency injection
     private CheckOutRepository checkout;
     private final CheckOutRepository checkOutRepository;
-    private final HistoryRepository historyService;
+    private final HistoryRepository historyRepository;
 
     public Book checkoutBook(String userEmail, Long bookId) throws Exception {
 //This method will checkout a book by a user
@@ -145,6 +145,7 @@ public class BookService {
                 book.get().getAuthor(),
                 book.get().getDescription(),
                 book.get().getImage());
+        h
 
     }
     //Implementing the renewed book method
