@@ -1,5 +1,6 @@
 package com.project1.libaryproject.Service;
 
+import com.project1.libaryproject.Entity.Histroy;
 import com.project1.libaryproject.Repository.BookRepository;
 import com.project1.libaryproject.Repository.CheckOutRepository;
 import com.project1.libaryproject.Entity.Book;
@@ -135,6 +136,15 @@ public class BookService {
         book.get().setAvailable_copies(book.get().getAvailable_copies() + 1);
         bookRepository.save(book.get());
         checkOutRepository.delete(checkout);
+
+        Histroy histroy = new Histroy(
+        userEmail,checkout.getCheckout_date()
+                ,LocalDate.now().toString(),
+                book.get().getTitle(),
+                book.get().getAuthor(),
+                book.get().getDescription(),
+
+        );
 
     }
     //Implementing the renewed book method
