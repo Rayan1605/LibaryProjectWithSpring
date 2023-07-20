@@ -19,6 +19,8 @@ private Long id;
 private String userEmail;
 @Column(name = "title")
 private String title;
+@Column(name = "question")
+private String question;
 
 
 
