@@ -13,7 +13,8 @@ public class MessagesService {
     MessageRepository messageRepository;
 
     public void postMessage(Message message, String userEmail) {
-        messageRepository.deleteById(id);
+    message.setUserEmail(userEmail);
+    messageRepository.save(message);
     }
 
 }
