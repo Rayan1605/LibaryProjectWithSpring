@@ -137,6 +137,9 @@ public class BookService {
         bookRepository.save(book.get());
         checkOutRepository.delete(checkout);
 //This is to save it in our history when we return the book
+        //And we are using our constructor to save it in our history
+        //so we are creating a new History object and saving it in our history repository
+        //Using the constructor
         Histroy histroy = new Histroy(
                   userEmail,
                 checkout.getCheckout_date()
