@@ -127,6 +127,14 @@ public class BookService {
         Optional<Book> book = bookRepository.findById(BookId);
 
         Checkout checkout = checkOutRepository.findByUserEmailAndBookId(userEmail, BookId);
+
+        if(checkout == null || book.isEmpty()) throw new Exception("You have not checked out this book");
+
+        book.get().setAvailable_copies(book.get().getAvailable_copies() + 1);
+        bookRepository.save(book.get());
+
+        checkOutRepository.delete(checkout);
+
     }
 
 }
