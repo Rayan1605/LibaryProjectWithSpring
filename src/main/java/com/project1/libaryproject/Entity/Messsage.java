@@ -25,7 +25,7 @@ private String question;
 private String adminEmail;
 @Column(name = "response")
 private String response;
-
-private boolean closed
+@Column(name = "closed")
+private boolean closed;
 
 }
