@@ -15,7 +15,9 @@ public class Messsage {
 @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
 @Column(name = "id")
 private Long id;
-
+@Column(name = "user_email")
+private String userEmail;
+@Column
 
 
 }
