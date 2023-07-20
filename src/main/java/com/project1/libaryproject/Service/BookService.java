@@ -125,6 +125,8 @@ public class BookService {
 //Implementing the return book method
     public void returnBook (String userEmail, Long BookId) throws Exception {
         Optional<Book> book = bookRepository.findById(BookId);
+
+        Checkout checkout = checkOutRepository.findByUserEmailAndBookId(userEmail, BookId);
     }
 
 }
