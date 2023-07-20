@@ -130,6 +130,7 @@ public class BookService {
 
         if(checkout == null || book.isEmpty()) throw new Exception("You have not checked out this book");
 
+        //So one more book is available and then we save it and delete it from the checkout
         book.get().setAvailable_copies(book.get().getAvailable_copies() + 1);
         bookRepository.save(book.get());
 
