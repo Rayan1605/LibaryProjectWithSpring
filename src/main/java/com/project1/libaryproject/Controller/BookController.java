@@ -82,6 +82,7 @@ public class BookController {
     @PutMapping("/secure/renew/loan")
     public void renewLoan(@RequestHeader(value = "Authorization") String token,
                            @RequestParam Long bookId) throws Exception {
+        //request param is to get the book id from the url
 
         String userEmail = CheckJwt(token); //extracting from Jwt
         bookService.renewLoan(userEmail, bookId);//then returning the book
