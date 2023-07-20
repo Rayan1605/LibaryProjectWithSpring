@@ -136,7 +136,7 @@ public class BookService {
         book.get().setAvailable_copies(book.get().getAvailable_copies() + 1);
         bookRepository.save(book.get());
         checkOutRepository.delete(checkout);
-
+//This is to save it in our history when we return the book
         Histroy histroy = new Histroy(
                   userEmail,
                 checkout.getCheckout_date()
