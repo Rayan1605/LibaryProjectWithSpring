@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Messsage {
+public class Message {
 @Id
 @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
 @Column(name = "id")
