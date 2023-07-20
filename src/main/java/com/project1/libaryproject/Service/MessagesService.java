@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class MessagesService {
     MessageRepository messageRepository;
 
-    public void postMessage(Message message, String userEmail) {
+    public void postMessage( String userEmail,Message message) {
     message.setUserEmail(userEmail);
     messageRepository.save(message);
     }

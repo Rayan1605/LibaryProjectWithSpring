@@ -25,6 +25,7 @@ public class MessageController {
                             @RequestBody Message messageRequest) throws Exception {
 
         String userEmail = CheckJwt(token);
+        messagesService.postMessage(userEmail, messageRequest);
 
     }
 
