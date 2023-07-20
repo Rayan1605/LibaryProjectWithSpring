@@ -138,13 +138,13 @@ public class BookService {
         checkOutRepository.delete(checkout);
 
         Histroy histroy = new Histroy(
-        userEmail,checkout.getCheckout_date()
+                  userEmail,
+                checkout.getCheckout_date()
                 ,LocalDate.now().toString(),
                 book.get().getTitle(),
                 book.get().getAuthor(),
                 book.get().getDescription(),
-
-        );
+                book.get().getImage());
 
     }
     //Implementing the renewed book method
