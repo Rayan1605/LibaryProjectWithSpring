@@ -20,7 +20,9 @@ public class MessageController {
         return userEmail;
     }
 
-    @PostMapping("/secure/add/message" Exception {
+    @PostMapping("/secure/add/message")
+    public void postMessage(@RequestHeader(value = "Authorization") String token,
+                            @RequestBody Message messageRequest)  {
         messagesService.addMessage(CheckJwt(token), message);
     }
 
