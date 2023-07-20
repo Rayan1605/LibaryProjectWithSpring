@@ -8,5 +8,6 @@ import org.springframework.data.repository.query.Param;
 
 public interface HistoryRepository extends JpaRepository<Histroy,Long> {
 
+
     Page<Histroy> findBooksByUserEmail(@Param("user_email") String userEmail, Pageable pageable);
 }
