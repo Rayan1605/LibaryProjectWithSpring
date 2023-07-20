@@ -136,6 +136,12 @@ public class BookService {
         checkOutRepository.delete(checkout);
 
     }
+    public void renewBook(String userEmail, Long BookId) throws Exception {
+        Checkout checkout = checkOutRepository.findByUserEmailAndBookId(userEmail, BookId);
+        if(checkout == null) throw new Exception("You have not checked out this book");
+        checkout.setReturn_date(LocalDate.now().plusDays(7).toString());
+        checkOutRepository.save(checkout);
+    }
 
 }
 
