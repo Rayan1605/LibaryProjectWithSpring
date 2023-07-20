@@ -120,6 +120,9 @@ public class BookService {
         }
         return bookRepository.findBooksByBookIds(bookIds);
 
+    }
+
+    public void returnBook (String userEmail, Long BookId) throws Exception {
 
     }
 
