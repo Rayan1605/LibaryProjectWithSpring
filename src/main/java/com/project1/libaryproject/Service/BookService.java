@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.swing.text.html.Option;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -121,9 +122,9 @@ public class BookService {
         return bookRepository.findBooksByBookIds(bookIds);
 
     }
-
+//Implementing the return book method
     public void returnBook (String userEmail, Long BookId) throws Exception {
-
+        Optional<Book> book = bookRepository.findById(BookId);
     }
 
 }
