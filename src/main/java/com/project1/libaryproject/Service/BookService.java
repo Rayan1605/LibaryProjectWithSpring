@@ -1,9 +1,11 @@
 package com.project1.libaryproject.Service;
 
+import com.project1.libaryproject.Entity.Histroy;
 import com.project1.libaryproject.Repository.BookRepository;
 import com.project1.libaryproject.Repository.CheckOutRepository;
 import com.project1.libaryproject.Entity.Book;
 import com.project1.libaryproject.Entity.Checkout;
+import com.project1.libaryproject.Repository.HistoryRepository;
 import com.project1.libaryproject.ResponseModel.CurrentLoans;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -26,6 +28,7 @@ public class BookService {
     //Using lombok to generate constructor for dependency injection
     private CheckOutRepository checkout;
     private final CheckOutRepository checkOutRepository;
+    private final HistoryRepository historyRepository;
 
     public Book checkoutBook(String userEmail, Long bookId) throws Exception {
 //This method will checkout a book by a user
@@ -133,9 +136,19 @@ public class BookService {
         book.get().setAvailable_copies(book.get().getAvailable_copies() + 1);
         bookRepository.save(book.get());
         checkOutRepository.delete(checkout);
+//This is to save it in our history when we return the book
+        Histroy histroy = new Histroy(
+                  userEmail,
+                checkout.getCheckout_date()
+                ,LocalDate.now().toString(),
+                book.get().getTitle(),
+                book.get().getAuthor(),
+                book.get().getDescription(),
+                book.get().getImage());
+        historyRepository.save(histroy);
 
     }
-    //Implementing the renew book method
+    //Implementing the renewed book method
     //Basically getting the checkout and changing the thing to the current date
     // and return date to + 7 days
     public void renewBook(String userEmail, Long BookId) throws Exception {
