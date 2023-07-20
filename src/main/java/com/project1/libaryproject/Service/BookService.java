@@ -145,7 +145,7 @@ public class BookService {
                 book.get().getAuthor(),
                 book.get().getDescription(),
                 book.get().getImage());
-        h
+        historyRepository.save(histroy);
 
     }
     //Implementing the renewed book method
