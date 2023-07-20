@@ -38,6 +38,6 @@ public class Histroy {
     private String description;
 
     @Column(name="img")
-    private String img
+    private String img;
 
 }
