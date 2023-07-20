@@ -67,4 +67,14 @@ public int currentLoansCount(@RequestHeader(value = "Authorization") String toke
         if (userEmail == null) {throw new Exception("You are not logged in");}
         return userEmail;
     }
+
+    @PutMapping("/secure/return")
+    public void returnbook(@RequestHeader(value = "Authorization") String token,
+    @RequestParam Long bookId) throws Exception {
+
+        String userEmail = CheckJwt(token); //extracting from Jwt
+      bookService.returnBook(userEmail, bookId);//then returning the book
+    }
+
+    }
 }
