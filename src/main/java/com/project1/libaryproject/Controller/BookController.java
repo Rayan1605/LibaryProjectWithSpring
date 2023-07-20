@@ -16,14 +16,16 @@ import java.util.List;
 @RequestMapping("/api/books")
 public class BookController {
     private final BookService bookService;
+
     @Autowired
     public BookController(BookService bookService) {
         this.bookService = bookService;
     }
+
     @GetMapping("/secure/currentloans/count") // the secure mean only a user with a
     // role of user can access this
     ////The secure we set up in the okta in the utils folder
-public int currentLoansCount(@RequestHeader(value = "Authorization") String token) {
+    public int currentLoansCount(@RequestHeader(value = "Authorization") String token) {
         //We are extracting the token from the header and passing it to the method
         //we are expecting something in the request header that has a key of Authorization
         // it's validating with okta automatically, and then we are passing the token to the method
@@ -37,8 +39,7 @@ public int currentLoansCount(@RequestHeader(value = "Authorization") String toke
     //Put is referring to updating the book
     //The secure we set up in the okta in the utils folder
     public Book checkoutBook(@RequestParam Long bookId,
-                             @RequestHeader(value = "Authorization") String token) throws Exception
-    {
+                             @RequestHeader(value = "Authorization") String token) throws Exception {
 
         String userEmail = ExtractJwt.extractJwtExtraction(token, "sub");
         //Above is To get the user's email
@@ -57,24 +58,27 @@ public int currentLoansCount(@RequestHeader(value = "Authorization") String toke
     }
 
     @GetMapping("/secure/currentloans")
-    public List<CurrentLoans> currentLoans (@RequestHeader(value = "Authorization") String token) throws Exception {
-       String userEmail =  CheckJwt(token);
-       return bookService.getCurrentLoans(userEmail);
+    public List<CurrentLoans> currentLoans(@RequestHeader(value = "Authorization") String token) throws Exception {
+        String userEmail = CheckJwt(token);
+        return bookService.getCurrentLoans(userEmail);
 
     }
-    private String CheckJwt(String token) throws Exception{
+
+    private String CheckJwt(String token) throws Exception {
         String userEmail = ExtractJwt.extractJwtExtraction(token, "\"sub\"");
-        if (userEmail == null) {throw new Exception("You are not logged in");}
+        if (userEmail == null) {
+            throw new Exception("You are not logged in");
+        }
         return userEmail;
     }
 
     @PutMapping("/secure/return")
     public void returnbook(@RequestHeader(value = "Authorization") String token,
-    @RequestParam Long bookId) throws Exception {
+                           @RequestParam Long bookId) throws Exception {
 
         String userEmail = CheckJwt(token); //extracting from Jwt
-      bookService.returnBook(userEmail, bookId);//then returning the book
+        bookService.returnBook(userEmail, bookId);//then returning the book
     }
 
-    }
 }
+
