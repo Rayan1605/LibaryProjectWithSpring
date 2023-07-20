@@ -11,7 +11,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Histroy {
 
-    public Histroy( String userEmail, String checkoutDate, String returnedDate, String title, String author, String description, String img) {
+    //Had to override the all args constructors because the id was not being generated
+    //Same with the checkout class
+    public Histroy( String userEmail, String checkoutDate, String returnedDate,
+                    String title, String author, String description, String img) {
         this.userEmail = userEmail;
         this.checkoutDate = checkoutDate;
         this.returnedDate = returnedDate;
