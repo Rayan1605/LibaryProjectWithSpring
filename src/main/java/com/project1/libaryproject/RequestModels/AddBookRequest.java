@@ -11,7 +11,7 @@ private String author;
 
 private String description;
 
-private String copies;
+private int copies;
 
 private String img;
 

@@ -16,6 +16,14 @@ public class AdminService {
 
 public void postBook(AddBookRequest addBookRequest) {
     Book book = new Book();
+    book.setTitle(addBookRequest.getTitle());
+    book.setAuthor(addBookRequest.getAuthor());
+    book.setDescription(addBookRequest.getDescription());
+    book.setAvailable_copies(addBookRequest.getCopies());
+    book.setCopies(addBookRequest.getCopies());
+    book.setImage(addBookRequest.getImg());
+    book.setCategory(addBookRequest.getCategory());
+
 }
 
 
