@@ -26,6 +26,23 @@ public void postBook(AddBookRequest addBookRequest) {
     bookRepository.save(book);
 
 }
+//This is to let people know that there are more books available
+public void IncreaseBookQuantity(Long bookId) throws Exception {
+    //If a book can't be found, then we share an error
+    Book book = bookRepository.findById(bookId).orElseThrow(() -> new Exception("Book not found"));
+    book.setCopies(book.getCopies() + 1);
+    book.setAvailable_copies(book.getAvailable_copies() + 1);
+    bookRepository.save(book);
+}
+public void DecreaseBookQuantity(Long bookID) throws Exception{
+    Book book = bookRepository.findById(bookID).orElseThrow(() -> new Exception("Book not found"));
+    if (book.getCopies() == 0 || book.getAvailable_copies() == 0) {
+        throw new Exception("Quantity is locked");
+    }
+
+    book.setCopies(book.getCopies() - 1);
+    book.setAvailable_copies(book.getAvailable_copies() - 1);
+}
 
 
 }
