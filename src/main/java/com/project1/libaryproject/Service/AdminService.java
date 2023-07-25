@@ -26,8 +26,9 @@ public void postBook(AddBookRequest addBookRequest) {
     bookRepository.save(book);
 
 }
-
+//This is to let people know that there are more books available
 public void IncreaseBookQuantity(Long bookId) throws Exception {
+    //If book can't be found then we share an error
     Book book = bookRepository.findById(bookId).orElseThrow(() -> new Exception("Book not found"));
     book.setCopies(book.getCopies() + 1);
     book.setAvailable_copies(book.getAvailable_copies() + 1);
