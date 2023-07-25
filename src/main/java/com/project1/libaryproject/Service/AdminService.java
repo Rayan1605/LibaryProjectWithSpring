@@ -27,5 +27,11 @@ public void postBook(AddBookRequest addBookRequest) {
 
 }
 
+public void IncreaseBookQuantity(Long bookId) throws Exception {
+    Book book = bookRepository.findById(bookId).orElseThrow(() -> new Exception("Book not found"));
+    book.setCopies(book.getCopies() + 1);
+    book.setAvailable_copies(book.getAvailable_copies() + 1);
+    bookRepository.save(book);
+}
 
 }
