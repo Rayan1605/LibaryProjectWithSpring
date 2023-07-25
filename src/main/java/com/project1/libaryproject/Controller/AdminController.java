@@ -36,6 +36,6 @@ public class AdminController {
     }
     private boolean CheckIfAdmin(String token) {
         String admin = ExtractJwt.extractJwtExtraction(token, "\"userType\"");
-        return admin == null || admin.equals("admin");
+        return admin == null || !admin.equals("admin");
     }
 }
