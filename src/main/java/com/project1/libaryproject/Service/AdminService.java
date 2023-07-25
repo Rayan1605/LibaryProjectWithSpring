@@ -23,6 +23,7 @@ public void postBook(AddBookRequest addBookRequest) {
     book.setCopies(addBookRequest.getCopies());
     book.setImage(addBookRequest.getImg());
     book.setCategory(addBookRequest.getCategory());
+    bookRepository.save(book);
 
 }
 
