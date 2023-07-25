@@ -27,8 +27,14 @@ public class SecurityConfiguration {
         http.authorizeHttpRequests(configurer -> //authorizeRequests is a method that takes a configurer;
                 // however, it deprecated,
                         // so we have to use the below method
-
                         configurer
+                                //This line specifies the list of endpoints
+                                // that should be protected and require authentication.
+                                // Requests to URLs that match any of the listed patterns will need to be authenticated.
+                                //
+                                //.authenticated(): This method specifies that any request matching the patterns
+                                // defined above should be authenticated, meaning only authenticated users
+                                // will be allowed to access those endpoints.
                                 .requestMatchers("/api/books/secure/**",
                                         "/api/reviews/secure/**",
                                         "/api/messages/secure/**",
