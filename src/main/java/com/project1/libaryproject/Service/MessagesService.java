@@ -28,7 +28,8 @@ public class MessagesService {
 
         message.get().setAdminEmail(userEmail);
         message.get().setResponse(adminQuestionRequest.getQuestion());
-
+        message.get().setClosed(true);
+        messageRepository.save(message.get());
 
     }
 
