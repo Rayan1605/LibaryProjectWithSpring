@@ -1,4 +1,20 @@
 package com.project1.libaryproject.RequestModels;
 
+import lombok.Data;
+
+@Data
 public class AddBookRequest {
+
+private String title;
+
+private String author;
+
+private String description;
+
+private String copies;
+
+private String img;
+
+private String category;
+
 }
