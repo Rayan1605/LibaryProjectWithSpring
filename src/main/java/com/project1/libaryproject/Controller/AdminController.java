@@ -28,6 +28,13 @@ public class AdminController {
       adminService.IncreaseBookQuantity(bookId);
 
     }
+    @PostMapping("/secure/add/quantity")
+    public void addQuantity(@RequestHeader (value = "Authorization")String token ,
+                            @RequestParam Long bookId) throws Exception {
+        if (!CheckIfAdmin(token))throw new Exception("You are not an admin");
+        adminService.IncreaseBookQuantity(bookId);
+
+    }
     private boolean CheckIfAdmin(String token) {
         String admin = ExtractJwt.extractJwtExtraction(token, "\"userType\"");
         return admin != null && admin.equals("admin");
