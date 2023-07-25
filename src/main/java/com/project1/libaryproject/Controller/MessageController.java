@@ -35,6 +35,7 @@ public class MessageController {
 
         String userEmail = CheckJwt(token);
         if (!CheckIfAdmin(token))throw new Exception("You are not an admin");
+        messagesService.putMessage(adminQuestionRequest, userEmail);
 
     }
 
