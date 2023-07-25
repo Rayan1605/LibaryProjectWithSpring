@@ -18,7 +18,7 @@ public class AdminController {
     public void postBook(@RequestHeader (value = "Authorization")String token ,
                          @RequestBody AddBookRequest addBookRequest) throws Exception {
         if (!CheckIfAdmin(token))throw new Exception("You are not an admin");
-
+        adminService.postBook(addBookRequest);
 
     }
     private boolean CheckIfAdmin(String token) {
