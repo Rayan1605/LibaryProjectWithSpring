@@ -34,5 +34,8 @@ public void IncreaseBookQuantity(Long bookId) throws Exception {
     book.setAvailable_copies(book.getAvailable_copies() + 1);
     bookRepository.save(book);
 }
+public void DecreaseBookQuantity(Long bookID) throws Exception{
+    Book book = bookRepository.findById(bookID).orElseThrow(() -> new Exception("Book not found"));
+}
 
 }
