@@ -32,7 +32,7 @@ public class AdminController {
     public void decreaseQuantity(@RequestHeader (value = "Authorization")String token ,
                             @RequestParam Long bookId) throws Exception {
         if (!CheckIfAdmin(token))throw new Exception("You are not an admin");
-        adminService.IncreaseBookQuantity(bookId);
+       adminService.DecreaseBookQuantity(bookId);
 
     }
     private boolean CheckIfAdmin(String token) {
