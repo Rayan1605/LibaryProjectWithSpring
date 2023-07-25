@@ -5,6 +5,7 @@ import com.project1.libaryproject.ResponseModel.CurrentLoans;
 import com.project1.libaryproject.Service.BookService;
 import com.project1.libaryproject.Utils.ExtractJwt;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,13 +15,9 @@ import java.util.List;
 // to access the api
 @RestController
 @RequestMapping("/api/books")
+@AllArgsConstructor
 public class BookController {
     private final BookService bookService;
-
-    @Autowired
-    public BookController(BookService bookService) {
-        this.bookService = bookService;
-    }
 
     @GetMapping("/secure/currentloans/count") // the secure mean only a user with a
     // role of user can access this
