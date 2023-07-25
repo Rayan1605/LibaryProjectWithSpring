@@ -1,6 +1,7 @@
 package com.project1.libaryproject.Controller;
 
 import com.project1.libaryproject.Entity.Message;
+import com.project1.libaryproject.RequestModels.AdminQuestionRequest;
 import com.project1.libaryproject.Service.MessagesService;
 import com.project1.libaryproject.Utils.ExtractJwt;
 import lombok.AllArgsConstructor;
@@ -26,6 +27,18 @@ public class MessageController {
 
         String userEmail = CheckJwt(token);
         messagesService.postMessage(userEmail, messageRequest);
+
+    }
+    @PutMapping("/secure/admin/message")
+    public void putMessage(@RequestHeader(value = "Authorization") String token,
+                           @RequestBody AdminQuestionRequest adminQuestionRequest) throws Exception {
+
+        String userEmail = CheckJwt(token);
+        if (!CheckIfAdmin(token)){}
+
+    }
+
+    private boolean CheckIfAdmin(String token) {
 
     }
 
