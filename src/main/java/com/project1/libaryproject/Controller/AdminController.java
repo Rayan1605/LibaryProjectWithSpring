@@ -21,7 +21,7 @@ public class AdminController {
         adminService.postBook(addBookRequest);
 
     }
-    @PostMapping("/secure/add/quantity")
+    @PostMapping("/secure/increase/book/quantity")
     public void addQuantity(@RequestHeader (value = "Authorization")String token ,
                             @RequestParam Long bookId) throws Exception {
         if (!CheckIfAdmin(token))throw new Exception("You are not an admin");
