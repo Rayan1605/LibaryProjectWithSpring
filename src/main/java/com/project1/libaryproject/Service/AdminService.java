@@ -43,9 +43,6 @@ public void DecreaseBookQuantity(Long bookID) throws Exception{
     book.setCopies(book.getCopies() - 1);
     book.setAvailable_copies(book.getAvailable_copies() - 1);
 }
-public void DeleteBook(Long bookId) throws Exception {
-    Book book = bookRepository.findById(bookId).orElseThrow(() -> new Exception("Book not found"));
-    bookRepository.delete(book);
-}
+
 
 }
