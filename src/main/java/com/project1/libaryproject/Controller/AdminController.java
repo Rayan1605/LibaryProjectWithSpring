@@ -16,7 +16,7 @@ public class AdminController {
     @PostMapping("/secure/add/book")
     public void postBook(@RequestHeader (value = "Authorization")String token ,
                          @RequestBody AddBookRequest addBookRequest) throws Exception {
-
+        if (!CheckIfAdmin(token))throw new Exception("You are not an admin");
         adminController.postBook();
 
     }
