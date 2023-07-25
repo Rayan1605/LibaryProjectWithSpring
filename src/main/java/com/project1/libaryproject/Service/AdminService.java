@@ -36,6 +36,10 @@ public void IncreaseBookQuantity(Long bookId) throws Exception {
 }
 public void DecreaseBookQuantity(Long bookID) throws Exception{
     Book book = bookRepository.findById(bookID).orElseThrow(() -> new Exception("Book not found"));
+    if (book.getCopies() == 0 || book.getAvailable_copies() == 0) {
+        throw new Exception("Quantity is locked");
+    }
+
     book.setCopies(book.getCopies() - 1);
     book.setAvailable_copies(book.getAvailable_copies() - 1);
 }
