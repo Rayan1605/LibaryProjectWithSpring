@@ -26,6 +26,10 @@ public class MessagesService {
 
         if (message.isEmpty()) throw new IllegalStateException("Message not found");
 
+        message.get().setAdminEmail(userEmail);
+        message.get().setResponse(adminQuestionRequest.getQuestion());
+
+
     }
 
 }
