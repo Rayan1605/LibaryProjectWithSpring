@@ -28,7 +28,7 @@ public class AdminController {
       adminService.IncreaseBookQuantity(bookId);
 
     }
-    @PostMapping("/secure/decrease/quantity")
+    @PostMapping("/secure/decrease/book/quantity")
     public void decreaseQuantity(@RequestHeader (value = "Authorization")String token ,
                             @RequestParam Long bookId) throws Exception {
         if (!CheckIfAdmin(token))throw new Exception("You are not an admin");
