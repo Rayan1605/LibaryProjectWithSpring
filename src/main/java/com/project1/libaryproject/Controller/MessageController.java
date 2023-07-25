@@ -34,12 +34,13 @@ public class MessageController {
                            @RequestBody AdminQuestionRequest adminQuestionRequest) throws Exception {
 
         String userEmail = CheckJwt(token);
-        if (!CheckIfAdmin(token)){}
+        if (!CheckIfAdmin(token))throw new Exception("You are not an admin");
 
     }
 
     private boolean CheckIfAdmin(String token) {
-
+        String admin = ExtractJwt.extractJwtExtraction(token, "\"userType\"");
+        return admin != null && admin.equals("admin");
     }
 
 }
