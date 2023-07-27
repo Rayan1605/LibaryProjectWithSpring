@@ -54,6 +54,8 @@ public class AdminService {
     public void DeleteBook(Long bookId) throws Exception {
         Book book = bookRepository.findById(bookId).orElseThrow(() -> new Exception("Book not found"));
         bookRepository.delete(book);
+        reviewRepository.deleteAllByBookId(bookId);
+        checkOutRepository.deleteAllByBookId(bookId);
 
     }
 }
