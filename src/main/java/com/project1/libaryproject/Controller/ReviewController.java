@@ -1,6 +1,7 @@
 package com.project1.libaryproject.Controller;
 
 import com.project1.libaryproject.RequestModels.ReviewRequest;
+import com.project1.libaryproject.Service.ReviewService;
 import com.project1.libaryproject.Utils.ExtractJwt;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -12,14 +13,14 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class ReviewController {
 
-    private ReviewController reviewController;
+   private ReviewService ReviewService;
 
     @GetMapping("/secure/user/book")
     //CheckingIfUserHasAlreadyReviewedTheBook
     public boolean CheckingUserReviewedBook(@RequestHeader(value = "Authorization")
                                                 String token,
                                             @RequestParam Long bookId) throws Exception {
-        return reviewController.CheckingUserReviewedBook(CheckJwt(token), bookId);
+        return ReviewService.checkIfUserHasAlreadyLeftAReview(CheckJwt(token), bookId);
 
 }
 
@@ -27,7 +28,7 @@ public class ReviewController {
     public void postReview(@RequestHeader(value = "Authorization") String token,
                            @RequestBody ReviewRequest reviewRequest) throws Exception {
 
-        reviewController.postReview(CheckJwt(token), reviewRequest);
+        ReviewService.postReview(CheckJwt(token), reviewRequest);
 
     }
 
