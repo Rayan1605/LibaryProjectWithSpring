@@ -6,7 +6,7 @@ import com.project1.libaryproject.Utils.ExtractJwt;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:3000")//This is to allow the React app
+@CrossOrigin(origins = "https://localhost:3000")//This is to allow the React app
 @AllArgsConstructor
 @RequestMapping("/api/admin")
 public class AdminController {

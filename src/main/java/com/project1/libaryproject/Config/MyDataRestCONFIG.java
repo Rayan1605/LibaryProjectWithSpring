@@ -20,7 +20,7 @@ public class MyDataRestCONFIG implements RepositoryRestConfigurer {
     config.exposeIdsFor(Message.class);
 
     disableHttpMethods(config, theUnsupportedActions);
-    String theAllowedOrgin = "http://localhost:3000";
+    String theAllowedOrgin = "https://localhost:3000";
     registry.addMapping(config.getBasePath() + "/**").allowedOrigins(theAllowedOrgin);
 }
 

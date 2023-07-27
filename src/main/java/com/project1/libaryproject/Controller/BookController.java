@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000")//This is to allow the React app
+@CrossOrigin(origins = "https://localhost:3000")//This is to allow the React app
 // to access the api
 @RestController
 @RequestMapping("/api/books")
