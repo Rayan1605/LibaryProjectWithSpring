@@ -13,7 +13,7 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
 
 Page<Review> findByBookId(@RequestParam("book_id") long  BookId, Pageable pageable);
 
-Review findByuser_emailAndBookId(String userEmail, Long BookId);
+Review findByUserEmailAndBookId(String userEmail, Long BookId);
 @Modifying
 @Query("delete from Review where BookId = :book_id")
 void deleteAllByBookId(@Param("book_id") Long bookId);
