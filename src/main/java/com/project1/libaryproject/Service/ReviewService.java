@@ -17,7 +17,7 @@ public class ReviewService {
     private final ReviewRepository reviewRepository;
 
     public void postReview(String userEmail, ReviewRequest reviewRequest) throws Exception {
-        Review Validate = reviewRepository.findByuser_emailAndBookId(userEmail, reviewRequest.getBookId());
+        Review Validate = reviewRepository.findByUserEmailAndBookId(userEmail, reviewRequest.getBookId());
 
         if (Validate != null) throw new Exception("You have already posted a review for this book");
         Review review = new Review();
@@ -34,14 +34,14 @@ public class ReviewService {
 
         }
         review.setDate(Date.valueOf(java.time.LocalDate.now())); //getting the current time
-        review.setUser_email(userEmail);
+        review.setUserEmail(userEmail);
         reviewRepository.save(review);
 
     }
     // Going to see if a user already left a review for a book and make it available for react to see
 
     public Boolean checkIfUserHasAlreadyLeftAReview(String userEmail, Long bookId) {
-        Review review = reviewRepository.findByuser_emailAndBookId(userEmail, bookId);
+        Review review = reviewRepository.findByUserEmailAndBookId(userEmail, bookId);
         return review != null;
     }
 }
