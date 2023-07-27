@@ -38,4 +38,11 @@ public class AdminController {
         String admin = ExtractJwt.extractJwtExtraction(token, "\"userType\"");
         return admin == null || !admin.equals("admin");
     }
+
+    @PostMapping("/secure/delete/book")
+    public void DeleteBook(@RequestHeader(value = "Authorization") String token,
+                           @RequestParam Long bookId) throws Exception {
+        if (CheckIfAdmin(token))throw new Exception("You are not an admin");
+        adminService.DeleteBook(bookId);
+    }
 }
