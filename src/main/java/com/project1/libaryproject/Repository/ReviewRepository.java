@@ -15,7 +15,7 @@ Page<Review> findByBookId(@RequestParam("book_id") long  BookId, Pageable pageab
 
 Review findByUserEmailAndBookId(String userEmail, Long BookId);
 @Modifying
-@Query("delete from Review where BookId = :book_id")
+@Query("delete from Review where bookId = :book_id")
 void deleteAllByBookId(@Param("book_id") Long bookId);
 
 }
