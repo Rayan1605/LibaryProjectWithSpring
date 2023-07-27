@@ -38,7 +38,7 @@ public class ReviewService {
         reviewRepository.save(review);
 
     }
-    // Going to see if a user already legt a review for a book and make it available for react to see
+    // Going to see if a user already left a review for a book and make it available for react to see
 
     public Boolean checkIfUserHasAlreadyLeftAReview(String userEmail, Long bookId) {
         Review review = reviewRepository.findByuserEmailAndBookId(userEmail, bookId);
