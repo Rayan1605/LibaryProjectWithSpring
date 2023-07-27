@@ -17,7 +17,7 @@ public class ReviewService {
     private final ReviewRepository reviewRepository;
 
     public void postReview(String userEmail, ReviewRequest reviewRequest) throws Exception {
-        Review Validate = reviewRepository.findByuserEmailAndBookId(userEmail, reviewRequest.getBookId());
+        Review Validate = reviewRepository.findByUser_emailAndBookId(userEmail, reviewRequest.getBookId());
 
         if (Validate != null) throw new Exception("You have already posted a review for this book");
         Review review = new Review();
