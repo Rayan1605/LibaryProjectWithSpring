@@ -11,6 +11,7 @@ import lombok.Data;
 @Table(name = "payment")
 public class Payment {
    @Id
+   @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
     private Long id;
 
    private String useremail;
