@@ -9,6 +9,7 @@ import com.stripe.model.PaymentIntent;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,7 +25,7 @@ public class PaymentService {
     private PaymentRepository paymentRepository;
 
     //This automatically injects any dependencies needed into the constructor.
-@Autowired
+    @Autowired
     public PaymentService(PaymentRepository paymentRepository,
                           // Getting the secret key from the application.properties file
                           @Value("${stripe.key.secret}") String secretKey) {
@@ -42,30 +43,31 @@ public class PaymentService {
     //Stripe.apiKey = secretKey;
 
     public PaymentIntent createPaymentIntent(PaymentInfoRequest paymentInfoRequest) throws StripeException {
-   List<String> PaymentMethodTypes = new ArrayList<>();
-   //The "card" payment method type is specifically added to the list of allowed payment
+        List<String> PaymentMethodTypes = new ArrayList<>();
+        //The "card" payment method type is specifically added to the list of allowed payment
         // types for a couple reasons:
         //
         //To explicitly enable and allow card payments for this PaymentIntent.
         //By default, no payment method types are enabled unless specified.
         //So adding "card" indicates that credit/debit card payments should be accepted
-    PaymentMethodTypes.add("card");
+        PaymentMethodTypes.add("card");
 
-    Map<String,Object> params = new HashMap<>();
+        Map<String, Object> params = new HashMap<>();
 
-    params.put("amount",paymentInfoRequest.getAmount());
-    params.put("currency",paymentInfoRequest.getCurrency());
-        params.put("payment_method_types",PaymentMethodTypes);
+        params.put("amount", paymentInfoRequest.getAmount());
+        params.put("currency", paymentInfoRequest.getCurrency());
+        params.put("payment_method_types", PaymentMethodTypes);
         return PaymentIntent.create(params);
     }
 
-    public ResponseEntity<String> stripePayment(String userEmail) throws Exception{
-    Payment payment = paymentRepository.findByUserEmail(userEmail);
+    public ResponseEntity<String> stripePayment(String userEmail) throws Exception {
+        Payment payment = paymentRepository.findByUserEmail(userEmail);
 
-    if(payment == null) throw new Exception("Payment not found");
+        if (payment == null) throw new Exception("Information is missing ");
 
-    payment.setAmount(00.00);
+        payment.setAmount(00.00);
         paymentRepository.save(payment);
-        return ResponseEntity.ok("Payment Successful");
-
+        //Below will send the 200 status code to the client
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
