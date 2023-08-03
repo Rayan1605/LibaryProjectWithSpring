@@ -17,10 +17,13 @@ import org.springframework.web.bind.annotation.*;
 public class PaymentController {
 
     private PaymentService paymentService;
-
+//This code is creating a PaymentIntent,
+// converting it to JSON, and returning it in an API response.
     @PostMapping("/payment-intent")
     public ResponseEntity<String> createPaymentIntent(@RequestBody PaymentInfoRequest paymentInfoRequest) throws Exception {
         PaymentIntent paymentIntent= paymentService.createPaymentIntent(paymentInfoRequest);
+        //toJson() converts the PaymentIntent object to a JSON string representation
+        //Saves JSON string in paymentJson variable
         String Payment = paymentIntent.toJson();
         return new ResponseEntity<>(Payment, HttpStatus.OK);
     }
