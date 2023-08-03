@@ -1,5 +1,6 @@
 package com.project1.libaryproject.Service;
 
+import com.project1.libaryproject.Entity.Payment;
 import com.project1.libaryproject.Repository.PaymentRepository;
 import com.project1.libaryproject.RequestModels.PaymentInfoRequest;
 import com.stripe.Stripe;
@@ -8,6 +9,7 @@ import com.stripe.model.PaymentIntent;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -55,6 +57,11 @@ public class PaymentService {
     params.put("currency",paymentInfoRequest.getCurrency());
         params.put("payment_method_types",PaymentMethodTypes);
         return PaymentIntent.create(params);
+    }
+
+    public ResponseEntity<String> stripePayment(String userEmail) throws Exception{
+    Payment payment = paymentRepository.findByUserEmail(userEmail);
+
     }
 
 }
