@@ -166,6 +166,13 @@ public class BookService {
         //So one more book is available, and then we save it and delete it from the checkout
         book.get().setAvailable_copies(book.get().getAvailable_copies() + 1);
         bookRepository.save(book.get());
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
+        Date d1 = formatter.parse(checkout.getReturn_date());
+        Date d2 = formatter.parse(LocalDate.now().toString());
+
+
         checkOutRepository.delete(checkout);
 //This is to save it in our history when we return the book
         //And we are using our constructor to save it in our history
