@@ -73,6 +73,13 @@ public class BookService {
     if((payment != null && payment.getAmount() > 0)|| (payment != null && BooksNeedToBeReturned)){
         throw new Exception("You have outstanding payments");
     }
+    if (payment==null){
+     Payment newPayment = new Payment();
+        newPayment.setAmount(0);
+        newPayment.setUserEmail(userEmail);
+        paymentRepository.save(newPayment);
+
+    }
 
         book.get().setAvailable_copies(book.get().getAvailable_copies() - 1);
         bookRepository.save(book.get());
