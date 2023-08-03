@@ -1,7 +1,10 @@
 package com.project1.libaryproject.Service;
 
 import com.project1.libaryproject.Repository.PaymentRepository;
+import com.project1.libaryproject.RequestModels.PaymentInfoRequest;
 import com.stripe.Stripe;
+import com.stripe.exception.StripeException;
+import com.stripe.model.PaymentIntent;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,5 +33,10 @@ public class PaymentService {
     //Saves the injected PaymentRepository into the class field to be used.
     //
     //Stripe.apiKey = secretKey;
+
+    public PaymentIntent createPaymentIntent(PaymentInfoRequest paymentInfoRequest) throws StripeException {
+
+
+    }
 
 }
