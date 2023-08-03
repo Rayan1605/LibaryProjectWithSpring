@@ -12,7 +12,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -39,6 +41,10 @@ public class PaymentService {
 
     public PaymentIntent createPaymentIntent(PaymentInfoRequest paymentInfoRequest) throws StripeException {
    List<String> PaymentMethodTypes = new ArrayList<>();
+    PaymentMethodTypes.add("card");
+
+    Map<String,Object> params = new HashMap<>();
+
 
     }
 
