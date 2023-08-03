@@ -1,6 +1,7 @@
 package com.project1.libaryproject.Service;
 
 import com.project1.libaryproject.Entity.Histroy;
+import com.project1.libaryproject.Entity.Payment;
 import com.project1.libaryproject.Repository.BookRepository;
 import com.project1.libaryproject.Repository.CheckOutRepository;
 import com.project1.libaryproject.Entity.Book;
@@ -66,10 +67,11 @@ public class BookService {
             break;
         }
     }
-    if (BooksNeedToBeReturned) {
-        throw new Exception("You have outstanding payments -> Please return your books and " +
-                "pay your fees" +
-                " before checking out a new book");
+
+        Payment payment = paymentRepository.findByUserEmail(userEmail);
+
+    if((payment != null && payment.getAmount() > 0)|| (payment != null && BooksNeedToBeReturned)){
+        throw new Exception("You have outstanding payments");
     }
 
         book.get().setAvailable_copies(book.get().getAvailable_copies() - 1);
