@@ -62,6 +62,7 @@ public class PaymentService {
     public ResponseEntity<String> stripePayment(String userEmail) throws Exception{
     Payment payment = paymentRepository.findByUserEmail(userEmail);
 
-    }
+    if(payment == null) throw new Exception("Payment not found");
+
 
 }
