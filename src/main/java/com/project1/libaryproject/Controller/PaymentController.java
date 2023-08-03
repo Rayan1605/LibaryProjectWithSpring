@@ -4,6 +4,7 @@ import com.project1.libaryproject.RequestModels.PaymentInfoRequest;
 import com.project1.libaryproject.Service.PaymentService;
 import com.stripe.model.PaymentIntent;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,7 @@ public class PaymentController {
     public ResponseEntity<String> createPaymentIntent(@RequestBody PaymentInfoRequest paymentInfoRequest) throws Exception {
         PaymentIntent paymentIntent= paymentService.createPaymentIntent(paymentInfoRequest);
         String Payment = paymentIntent.toJson();
-        return new ResponseEntity<>();
+        return new ResponseEntity<>(Payment, HttpStatus.OK);
     }
 
 }
