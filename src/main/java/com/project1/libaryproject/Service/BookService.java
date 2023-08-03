@@ -67,7 +67,8 @@ public class BookService {
         }
     }
     if (BooksNeedToBeReturned) {
-        throw new Exception("You have outstanding payments -> Please return your books and pay your fees" +
+        throw new Exception("You have outstanding payments -> Please return your books and " +
+                "pay your fees" +
                 " before checking out a new book");
     }
 
