@@ -64,5 +64,7 @@ public class PaymentService {
 
     if(payment == null) throw new Exception("Payment not found");
 
+    payment.setAmount(00.00);
+        paymentRepository.save(payment);
 
 }
