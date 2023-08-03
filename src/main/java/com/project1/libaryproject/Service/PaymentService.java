@@ -58,6 +58,9 @@ public class PaymentService {
         params.put("amount", paymentInfoRequest.getAmount());
         params.put("currency", paymentInfoRequest.getCurrency());
         params.put("payment_method_types", PaymentMethodTypes);
+        //The PaymentIntent object in Stripe represents a payment
+        // that is intended to be made in the future.
+        // It is used to handle customer payments in Stripe.
         return PaymentIntent.create(params);
     }
 
