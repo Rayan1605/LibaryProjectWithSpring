@@ -55,7 +55,21 @@ public class BookService {
         //Making sure this person does not have any outstanding payments
      List<Checkout> currentBooksCheckedOut = checkOutRepository.findByUserEmail(userEmail);
         SimpleDateFormat start = new SimpleDateFormat("yyyy-MM-dd");
-        Date startDate = start.parse(currentBooksCheckedOut.get(0).getCheckout_date());
+    boolean BooksNeedToBeReturned = false;
+    for (Checkout bookCheckedOut : currentBooksCheckedOut) {
+        Date d1 = start.parse(bookCheckedOut.getReturn_date());
+        Date d2 = start.parse(LocalDate.now().toString());
+        TimeUnit time = TimeUnit.DAYS;
+        double difference = time.convert(d1.getTime() - d2.getTime(), TimeUnit.MILLISECONDS);
+        if (difference < 0) {
+            BooksNeedToBeReturned = true;
+            break;
+        }
+    }
+    if (BooksNeedToBeReturned) {
+        throw new Exception("You have outstanding payments -> Please return your books and pay your fees" +
+                " before checking out a new book");
+    }
 
         book.get().setAvailable_copies(book.get().getAvailable_copies() - 1);
         bookRepository.save(book.get());
