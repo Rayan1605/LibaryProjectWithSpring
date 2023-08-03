@@ -14,4 +14,6 @@ public class Payment {
     private Long id;
 
    private String useremail;
+
+   private double amount;
 }
