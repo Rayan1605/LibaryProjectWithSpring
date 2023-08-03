@@ -21,5 +21,14 @@ public class PaymentService {
         this.paymentRepository = paymentRepository;
         Stripe.apiKey = secretKey;
     }
+    //@Value("${stripe.key.secret}") String secretKey
+    //
+    //This injects the value of the property named "stripe.key.secret" from the application.properties file into the secretKey parameter.
+    //
+    //this.paymentRepository = paymentRepository;
+    //
+    //Saves the injected PaymentRepository into the class field to be used.
+    //
+    //Stripe.apiKey = secretKey;
 
 }
