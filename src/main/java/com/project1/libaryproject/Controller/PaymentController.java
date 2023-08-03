@@ -2,6 +2,7 @@ package com.project1.libaryproject.Controller;
 
 import com.project1.libaryproject.RequestModels.PaymentInfoRequest;
 import com.project1.libaryproject.Service.PaymentService;
+import com.project1.libaryproject.Utils.ExtractJwt;
 import com.stripe.model.PaymentIntent;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -28,5 +29,10 @@ public class PaymentController {
     public ResponseEntity<String> stripePaymentComplete(@RequestHeader(value = "Authorization")
                                                         String token) throws Exception {
 
+        String userEmail = ExtractJwt.extractJwtExtraction(token,"\"sub\"");
+        if (userEmail == null) {
+            return new ResponseEntity<>("User not found", HttpStatus.BAD_REQUEST);
+        }
+        return paymentService.stripePayment(userEmail);
     }
 }
