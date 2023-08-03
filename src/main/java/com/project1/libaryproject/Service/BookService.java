@@ -1,13 +1,16 @@
 package com.project1.libaryproject.Service;
 
 import com.project1.libaryproject.Entity.Histroy;
+import com.project1.libaryproject.Entity.Payment;
 import com.project1.libaryproject.Repository.BookRepository;
 import com.project1.libaryproject.Repository.CheckOutRepository;
 import com.project1.libaryproject.Entity.Book;
 import com.project1.libaryproject.Entity.Checkout;
 import com.project1.libaryproject.Repository.HistoryRepository;
+import com.project1.libaryproject.Repository.PaymentRepository;
 import com.project1.libaryproject.ResponseModel.CurrentLoans;
 import lombok.AllArgsConstructor;
+import org.hibernate.annotations.Check;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,30 +32,77 @@ public class BookService {
     private CheckOutRepository checkout;
     private final CheckOutRepository checkOutRepository;
     private final HistoryRepository historyRepository;
-
+    private final PaymentRepository paymentRepository;
     public Book checkoutBook(String userEmail, Long bookId) throws Exception {
-//This method will checkout a book by a user
+//This method will check out a book by a user,
 //It will check if the user has already checked out the book
-//If the user has already checked out the book it will throw an exception
-//If the user has not checked out the book it will checkout the book and return the book
+//If the user has already checked out the book, it will throw an exception
+//If the user has not checked out the book, it will check out the book and return the book
 
-        //First we need to find a specific book by its id
+        //First, we need to find a specific book by its id
         //When you call the database you need to return an optional
 
         Optional<Book> book = bookRepository.findById(bookId);
-//If the book is not found we will throw an exception
+//If the book is not found, we will throw an exception
 
         Checkout validateUser = checkout.findByUserEmailAndBookId(userEmail, bookId);
-//Making sure validateUser is null because if not null then the user has already checked out the book
+//Making sure validateUser is null because if not null, then the user has already checked out the book
         int validate = Validate(validateUser, book);
         switch (validate) {
             case 1 -> throw new Exception("You have already checked out this book");
             case 2 -> throw new Exception("Book not found");
             case 3 -> throw new Exception("Book is not available");
         }
+       //Checking if a user has any outstanding payments or overdue books before
+        // allowing a new checkout. Here is what it's doing:
+        //
+        //Find all current checked-out books for the user using their email.
+        //Loop through each checked-out book.
+        //Parse the return date and today's date into Date objects.
+        //Calculate the difference between return date and today.
+        //If the difference is negative, the book is overdue. Set flag BooksNeedToBeReturned.
+        //Lookup any existing Payment for the user by email.
+        //If Payment amount > 0, they have an outstanding balance.
+        //Or if BooksNeedToBeReturned is true, they have overdue books.
+        //If either is true, throw Exception to deny checkout.
+        //If no Payment is found, create a new Payment for the user with $0 balance.
+        //Save the new Payment.
+        //So in summary:
+        //
+        //It checks for overdue books
+        //Checks for outstanding payment balance
+        //Throws exception if either exists to deny checkout
+        //Creates new $0 Payment if none existed
+     List<Checkout> currentBooksCheckedOut = checkOutRepository.findByUserEmail(userEmail);
+        SimpleDateFormat start = new SimpleDateFormat("yyyy-MM-dd");
+    boolean BooksNeedToBeReturned = false;
+    for (Checkout bookCheckedOut : currentBooksCheckedOut) {
+        Date d1 = start.parse(bookCheckedOut.getReturn_date());
+        Date d2 = start.parse(LocalDate.now().toString());
+        TimeUnit time = TimeUnit.DAYS;
+        double difference = time.convert(d1.getTime() - d2.getTime(), TimeUnit.MILLISECONDS);
+        if (difference < 0) {
+            BooksNeedToBeReturned = true;
+            break;
+        }
+    }
+
+        Payment payment = paymentRepository.findByUserEmail(userEmail);
+
+    if((payment != null && payment.getAmount() > 0)|| (payment != null && BooksNeedToBeReturned)){
+        throw new Exception("You have outstanding payments");
+    }
+    if (payment==null){
+     Payment newPayment = new Payment();
+        newPayment.setAmount(0);
+        newPayment.setUserEmail(userEmail);
+        paymentRepository.save(newPayment);
+
+    }
+
         book.get().setAvailable_copies(book.get().getAvailable_copies() - 1);
         bookRepository.save(book.get());
-//If the book is found we will checkout the book
+//If the book is found, we will check out the book
         Checkout checkout = new Checkout(
                 userEmail,
                 LocalDate.now().toString(),
@@ -87,7 +137,7 @@ public class BookService {
         List<Checkout> checkoutList = checkOutRepository.findByUserEmail(userEmail);
         List<CurrentLoans> currentLoans = new ArrayList<>();
         List<Book> books = getBooks(checkoutList);
-        //Going to check if the book is overdue and how long it is
+        //Going to check if the book is overdue and how longs it is
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
         for(Book book: books){
@@ -135,6 +185,24 @@ public class BookService {
         //So one more book is available, and then we save it and delete it from the checkout
         book.get().setAvailable_copies(book.get().getAvailable_copies() + 1);
         bookRepository.save(book.get());
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
+        Date d1 = formatter.parse(checkout.getReturn_date());
+        Date d2 = formatter.parse(LocalDate.now().toString());
+
+        TimeUnit time = TimeUnit.DAYS;
+
+        double difference = time.convert(d1.getTime() - d2.getTime(), TimeUnit.MILLISECONDS);
+        if (difference < 0){
+            Payment payment = paymentRepository.findByUserEmail(userEmail);
+
+            payment.setAmount(payment.getAmount() + Math.abs(difference));
+            paymentRepository.save(payment);
+
+            payment.setAmount(payment.getAmount() + Math.abs(difference));
+            paymentRepository.save(payment);
+        }
         checkOutRepository.delete(checkout);
 //This is to save it in our history when we return the book
         //And we are using our constructor to save it in our history
