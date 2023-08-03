@@ -36,8 +36,8 @@ public class BookService {
     public Book checkoutBook(String userEmail, Long bookId) throws Exception {
 //This method will check out a book by a user
 //It will check if the user has already checked out the book
-//If the user has already checked out the book it will throw an exception
-//If the user has not checked out the book it will checkout the book and return the book
+//If the user has already checked out the book, it will throw an exception
+//If the user has not checked out the book, it will check out the book and return the book
 
         //First, we need to find a specific book by its id
         //When you call the database you need to return an optional
