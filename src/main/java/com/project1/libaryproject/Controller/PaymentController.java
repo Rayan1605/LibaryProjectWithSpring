@@ -2,6 +2,7 @@ package com.project1.libaryproject.Controller;
 
 import com.project1.libaryproject.RequestModels.PaymentInfoRequest;
 import com.project1.libaryproject.Service.PaymentService;
+import com.stripe.model.PaymentIntent;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,7 @@ public class PaymentController {
 
     @PostMapping("/payment-intent")
     public ResponseEntity<String> createPaymentIntent(@RequestBody PaymentInfoRequest paymentInfoRequest) throws Exception {
-        return ResponseEntity.ok(paymentService.createPaymentIntent(paymentInfoRequest));
+        PaymentIntent paymentIntent= paymentService.createPaymentIntent(paymentInfoRequest);
     }
 
 }
