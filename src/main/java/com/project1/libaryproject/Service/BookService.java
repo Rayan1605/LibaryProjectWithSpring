@@ -34,7 +34,7 @@ public class BookService {
     private final HistoryRepository historyRepository;
     private final PaymentRepository paymentRepository;
     public Book checkoutBook(String userEmail, Long bookId) throws Exception {
-//This method will check out a book by a user
+//This method will check out a book by a user,
 //It will check if the user has already checked out the book
 //If the user has already checked out the book, it will throw an exception
 //If the user has not checked out the book, it will check out the book and return the book
