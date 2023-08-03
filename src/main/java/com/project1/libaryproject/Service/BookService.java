@@ -53,7 +53,25 @@ public class BookService {
             case 2 -> throw new Exception("Book not found");
             case 3 -> throw new Exception("Book is not available");
         }
-        //Making sure this person does not have any outstanding payments
+       //Checking if a user has any outstanding payments or overdue books before allowing a new checkout. Here is what it's doing:
+        //
+        //Find all current checked out books for the user using their email.
+        //Loop through each checked out book.
+        //Parse the return date and today's date into Date objects.
+        //Calculate the difference between return date and today.
+        //If difference is negative, the book is overdue. Set flag BooksNeedToBeReturned.
+        //Lookup any existing Payment for the user by email.
+        //If Payment amount > 0, they have an outstanding balance.
+        //Or if BooksNeedToBeReturned is true, they have overdue books.
+        //If either are true, throw Exception to deny checkout.
+        //If no Payment found, create a new Payment for the user with $0 balance.
+        //Save the new Payment.
+        //So in summary:
+        //
+        //It checks for overdue books
+        //Checks for outstanding payment balance
+        //Throws exception if either exist to deny checkout
+        //Creates new $0 Payment if none existed
      List<Checkout> currentBooksCheckedOut = checkOutRepository.findByUserEmail(userEmail);
         SimpleDateFormat start = new SimpleDateFormat("yyyy-MM-dd");
     boolean BooksNeedToBeReturned = false;
