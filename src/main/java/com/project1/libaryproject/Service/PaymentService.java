@@ -45,6 +45,8 @@ public class PaymentService {
 
     Map<String,Object> params = new HashMap<>();
 
+    params.put("amount",paymentInfoRequest.getAmount());
+    params.put("currency",paymentInfoRequest.get);
 
     }
 
