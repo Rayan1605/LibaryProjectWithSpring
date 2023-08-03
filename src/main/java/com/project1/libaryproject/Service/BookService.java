@@ -177,12 +177,10 @@ public class BookService {
         double difference = time.convert(d1.getTime() - d2.getTime(), TimeUnit.MILLISECONDS);
         if (difference < 0){
             Payment payment = paymentRepository.findByUserEmail(userEmail);
-            if(payment == null){
-                Payment newPayment = new Payment();
-                newPayment.setAmount(0);
-                newPayment.setUserEmail(userEmail);
-                paymentRepository.save(newPayment);
-            }
+
+            payment.setAmount(payment.getAmount() + Math.abs(difference));
+            paymentRepository.save(payment);
+
             payment.setAmount(payment.getAmount() + Math.abs(difference));
             paymentRepository.save(payment);
         }
