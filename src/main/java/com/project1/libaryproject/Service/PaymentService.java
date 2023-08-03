@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @Transactional
 public class PaymentService {
@@ -35,7 +38,7 @@ public class PaymentService {
     //Stripe.apiKey = secretKey;
 
     public PaymentIntent createPaymentIntent(PaymentInfoRequest paymentInfoRequest) throws StripeException {
-
+   List<String> PaymentMethodTypes = new ArrayList<>();
 
     }
 
