@@ -19,6 +19,8 @@ public class PaymentController {
     @PostMapping("/payment-intent")
     public ResponseEntity<String> createPaymentIntent(@RequestBody PaymentInfoRequest paymentInfoRequest) throws Exception {
         PaymentIntent paymentIntent= paymentService.createPaymentIntent(paymentInfoRequest);
+        String Payment = paymentIntent.toJson();
+        return new ResponseEntity<>();
     }
 
 }
