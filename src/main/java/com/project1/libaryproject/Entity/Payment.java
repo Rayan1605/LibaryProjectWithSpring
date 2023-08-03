@@ -1,9 +1,6 @@
 package com.project1.libaryproject.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -12,9 +9,10 @@ import lombok.Data;
 public class Payment {
    @Id
    @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
+   @Column(name = "id")
     private Long id;
-
-   private String useremail;
-
-   private double amount;
+    @Column(name = "user_email")
+       private String userEmail;
+    @Column(name = "amount")
+       private double amount;
 }
