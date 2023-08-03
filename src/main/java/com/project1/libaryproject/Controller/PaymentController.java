@@ -24,4 +24,9 @@ public class PaymentController {
         return new ResponseEntity<>(Payment, HttpStatus.OK);
     }
 
+    @PutMapping("/payment-Complete")
+    public ResponseEntity<String> stripePaymentComplete(@RequestHeader(value = "Authorization")
+                                                        String token) throws Exception {
+
+    }
 }
