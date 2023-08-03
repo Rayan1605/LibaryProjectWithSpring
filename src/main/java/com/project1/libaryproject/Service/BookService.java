@@ -6,6 +6,7 @@ import com.project1.libaryproject.Repository.CheckOutRepository;
 import com.project1.libaryproject.Entity.Book;
 import com.project1.libaryproject.Entity.Checkout;
 import com.project1.libaryproject.Repository.HistoryRepository;
+import com.project1.libaryproject.Repository.PaymentRepository;
 import com.project1.libaryproject.ResponseModel.CurrentLoans;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,7 @@ public class BookService {
     private CheckOutRepository checkout;
     private final CheckOutRepository checkOutRepository;
     private final HistoryRepository historyRepository;
-
+    private final PaymentRepository paymentRepository;
     public Book checkoutBook(String userEmail, Long bookId) throws Exception {
 //This method will checkout a book by a user
 //It will check if the user has already checked out the book
