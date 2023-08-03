@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class PaymentService {
     private PaymentRepository paymentRepository;
+
+    //This automatically injects any dependencies needed into the constructor.
 @Autowired
     public PaymentService(PaymentRepository paymentRepository,
                           // Getting the secret key from the application.properties file
