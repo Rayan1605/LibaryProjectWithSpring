@@ -172,7 +172,20 @@ public class BookService {
         Date d1 = formatter.parse(checkout.getReturn_date());
         Date d2 = formatter.parse(LocalDate.now().toString());
 
+        TimeUnit time = TimeUnit.DAYS;
 
+        double difference = time.convert(d1.getTime() - d2.getTime(), TimeUnit.MILLISECONDS);
+        if (difference < 0){
+            Payment payment = paymentRepository.findByUserEmail(userEmail);
+            if(payment == null){
+                Payment newPayment = new Payment();
+                newPayment.setAmount(0);
+                newPayment.setUserEmail(userEmail);
+                paymentRepository.save(newPayment);
+            }
+            payment.setAmount(payment.getAmount() + Math.abs(difference));
+            paymentRepository.save(payment);
+        }
         checkOutRepository.delete(checkout);
 //This is to save it in our history when we return the book
         //And we are using our constructor to save it in our history
