@@ -48,6 +48,7 @@ public class PaymentService {
     params.put("amount",paymentInfoRequest.getAmount());
     params.put("currency",paymentInfoRequest.getCurrency());
         params.put("payment_method_types",PaymentMethodTypes);
+        return PaymentIntent.create(params);
     }
 
 }
