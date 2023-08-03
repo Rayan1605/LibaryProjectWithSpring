@@ -50,6 +50,7 @@ public class PaymentService {
         //To explicitly enable and allow card payments for this PaymentIntent.
         //By default, no payment method types are enabled unless specified.
         //So adding "card" indicates that credit/debit card payments should be accepted
+        //// Basically This enables credit/debit card payments
         PaymentMethodTypes.add("card");
 
         Map<String, Object> params = new HashMap<>();
