@@ -41,6 +41,12 @@ public class PaymentService {
 
     public PaymentIntent createPaymentIntent(PaymentInfoRequest paymentInfoRequest) throws StripeException {
    List<String> PaymentMethodTypes = new ArrayList<>();
+   //The "card" payment method type is specifically added to the list of allowed payment
+        // types for a couple reasons:
+        //
+        //To explicitly enable and allow card payments for this PaymentIntent.
+        //By default, no payment method types are enabled unless specified.
+        //So adding "card" indicates that credit/debit card payments should be accepted
     PaymentMethodTypes.add("card");
 
     Map<String,Object> params = new HashMap<>();
