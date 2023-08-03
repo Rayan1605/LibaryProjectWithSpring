@@ -9,6 +9,7 @@ import com.project1.libaryproject.Repository.HistoryRepository;
 import com.project1.libaryproject.Repository.PaymentRepository;
 import com.project1.libaryproject.ResponseModel.CurrentLoans;
 import lombok.AllArgsConstructor;
+import org.hibernate.annotations.Check;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -52,7 +53,9 @@ public class BookService {
             case 3 -> throw new Exception("Book is not available");
         }
         //Making sure this person does not have any outstanding payments
-
+     List<Checkout> currentBooksCheckedOut = checkOutRepository.findByUserEmail(userEmail);
+        SimpleDateFormat start = new SimpleDateFormat("yyyy-MM-dd");
+        Date startDate = start.parse(currentBooksCheckedOut.get(0).getCheckout_date());
 
         book.get().setAvailable_copies(book.get().getAvailable_copies() - 1);
         bookRepository.save(book.get());
