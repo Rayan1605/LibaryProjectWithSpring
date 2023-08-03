@@ -66,5 +66,6 @@ public class PaymentService {
 
     payment.setAmount(00.00);
         paymentRepository.save(payment);
+        return ResponseEntity.ok("Payment Successful");
 
 }
