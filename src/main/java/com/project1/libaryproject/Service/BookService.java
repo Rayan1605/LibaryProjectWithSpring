@@ -51,6 +51,9 @@ public class BookService {
             case 2 -> throw new Exception("Book not found");
             case 3 -> throw new Exception("Book is not available");
         }
+        //Making sure this person does not have any outstanding payments
+
+
         book.get().setAvailable_copies(book.get().getAvailable_copies() - 1);
         bookRepository.save(book.get());
 //If the book is found we will checkout the book
