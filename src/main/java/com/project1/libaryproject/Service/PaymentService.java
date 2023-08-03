@@ -47,7 +47,7 @@ public class PaymentService {
 
     params.put("amount",paymentInfoRequest.getAmount());
     params.put("currency",paymentInfoRequest.getCurrency());
-
+       params.put("receipt_email",paymentInfoRequest.getReceiptEmail());
 
     }
 
