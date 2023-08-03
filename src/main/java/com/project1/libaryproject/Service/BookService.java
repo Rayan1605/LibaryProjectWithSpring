@@ -34,19 +34,19 @@ public class BookService {
     private final HistoryRepository historyRepository;
     private final PaymentRepository paymentRepository;
     public Book checkoutBook(String userEmail, Long bookId) throws Exception {
-//This method will checkout a book by a user
+//This method will check out a book by a user
 //It will check if the user has already checked out the book
 //If the user has already checked out the book it will throw an exception
 //If the user has not checked out the book it will checkout the book and return the book
 
-        //First we need to find a specific book by its id
+        //First, we need to find a specific book by its id
         //When you call the database you need to return an optional
 
         Optional<Book> book = bookRepository.findById(bookId);
-//If the book is not found we will throw an exception
+//If the book is not found, we will throw an exception
 
         Checkout validateUser = checkout.findByUserEmailAndBookId(userEmail, bookId);
-//Making sure validateUser is null because if not null then the user has already checked out the book
+//Making sure validateUser is null because if not null, then the user has already checked out the book
         int validate = Validate(validateUser, book);
         switch (validate) {
             case 1 -> throw new Exception("You have already checked out this book");
