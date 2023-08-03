@@ -1,4 +1,7 @@
 package com.project1.libaryproject.Repository;
 
-public interface PaymentRepository {
+import com.project1.libaryproject.Entity.Payment;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PaymentRepository extends JpaRepository<Payment ,Long> {
 }
