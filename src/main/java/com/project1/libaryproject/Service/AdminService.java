@@ -18,7 +18,6 @@ public class AdminService {
     private CheckOutRepository checkOutRepository;
     private ReviewRepository reviewRepository;
 
-
     public void postBook(AddBookRequest addBookRequest) {
         Book book = new Book();
         book.setTitle(addBookRequest.getTitle());
