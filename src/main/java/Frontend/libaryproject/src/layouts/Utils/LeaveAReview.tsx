@@ -40,6 +40,7 @@ export const LeaveAReview: React.FC<{ submitReview: any }> = (props) => {
                         <label className='form-label'>
                             Description
                         </label>
+                        {/* Text area is what allow the user to input text */}
                         <textarea className='form-control' id='submitReviewDescription' placeholder='Optional'
                             rows={3} onChange={e => setReviewDescription(e.target.value)}>
                         </textarea>
