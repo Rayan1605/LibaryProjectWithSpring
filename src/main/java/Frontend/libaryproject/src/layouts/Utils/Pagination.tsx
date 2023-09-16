@@ -1,7 +1,7 @@
 export const Pagination: React.FC<{currentPage: number,
      totalPages: number,
       paginate: any}> = (props) => {
-
+ //Making an array and we will push any that is supposed to show up on the page
         const pageNumbers = [];
 
         if (props.currentPage === 1 ) {
@@ -31,6 +31,7 @@ export const Pagination: React.FC<{currentPage: number,
         }
 
         return (
+            // This is a Navbar that will display the page numbers
             <nav aria-label="...">
                 <ul className='pagination'>
                     <li className='page-item' onClick={() => props.paginate(1)}>

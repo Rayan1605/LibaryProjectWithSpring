@@ -32,8 +32,9 @@ export const LeaveAReview: React.FC<{ submitReview: any }> = (props) => {
             </ul>
             <StarsReview rating={starInput} size={32}/>
 
-            {displayInput && 
+            {displayInput &&
                 <form method='POST' action='#'>
+                    {/* This is a Post Method  */}
                     <hr/>
 
                     <div className='mb-3'>
@@ -45,9 +46,11 @@ export const LeaveAReview: React.FC<{ submitReview: any }> = (props) => {
                             rows={3} onChange={e => setReviewDescription(e.target.value)}>
                         </textarea>
                     </div>
-
+                    {/* This will call the submitReview function */}
                     <div>
-                        <button type='button' onClick={() => props.submitReview(starInput, reviewDescription)} className='btn btn-primary mt-3'>Submit Review</button>
+                        <button type='button' onClick={() =>
+
+                            props.submitReview(starInput, reviewDescription)} className='btn btn-primary mt-3'>Submit Review</button>
                     </div>
                 </form>
             }
