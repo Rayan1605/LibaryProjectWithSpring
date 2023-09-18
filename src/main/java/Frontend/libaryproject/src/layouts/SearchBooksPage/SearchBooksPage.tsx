@@ -3,7 +3,7 @@ import BookModel from '../../models/BookModel';
 import { Pagination } from '../Utils/Pagination';
 import { SpinnerLoading } from '../Utils/SpinnerLoading';
 import { SearchBook } from './components/SearchBook';
-
+{/* this component provides a user interface for searching and browsing books*/}
 export const SearchBooksPage = () => {
 
     const [books, setBooks] = useState<BookModel[]>([]);
