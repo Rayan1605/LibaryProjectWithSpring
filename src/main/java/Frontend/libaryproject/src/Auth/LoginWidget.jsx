@@ -1,5 +1,5 @@
 import { Redirect } from 'react-router-dom';
-import { useOktaAuth } from '@okta/okta-react';
+import { useOktaAuth } from '@okta/okta-react';//This hook is used to access Okta authentication functionality.
 import { SpinnerLoading } from '../layouts/Utils/SpinnerLoading';
 import OktaSignInWidget from './OktaSignInWidget';
 
