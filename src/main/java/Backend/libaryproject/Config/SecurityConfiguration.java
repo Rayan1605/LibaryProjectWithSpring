@@ -11,7 +11,7 @@ import org.springframework.web.accept.HeaderContentNegotiationStrategy;
 
 
 
-@Configuration
+@Configuration // Set this up setting up the application's environment
 public class SecurityConfiguration {
 
     @Bean
