@@ -4,7 +4,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.accept.ContentNegotiationStrategy;
 import org.springframework.web.accept.HeaderContentNegotiationStrategy;
@@ -33,7 +32,7 @@ public class SecurityConfiguration {
                                 // Requests to URLs that match any of the
                                 // listed patterns will need to be authenticated.
                                 //
-                                //.authenticated(): This method specifies that any request matching the patterns
+                                //authenticated(): This method specifies that any request matching the patterns
                                 // defined above should be authenticated, meaning only authenticated users
                                 // will be allowed to access those endpoints.
                                 .requestMatchers("/api/books/secure/**",
