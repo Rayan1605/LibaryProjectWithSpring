@@ -42,7 +42,7 @@ public class SecurityConfiguration {
                                 .authenticated())// anyone with valid OAuth2 tokens can access
                 .oauth2ResourceServer((oauth2) -> oauth2
                         .jwt(Customizer.withDefaults()) // expecting a JWT token
-                );
+                         );
 
         // Add CORS filters
        http.cors(Customizer.withDefaults());
